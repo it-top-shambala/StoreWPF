@@ -1,4 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+    <Style x:Key="Image_Style">
+        <Setter Property="ItemsControl.Margin" Value="10"/>
+        <Setter Property="ItemsControl.Padding" Value="10"/>
+    </Style>
+    <Style x:Key="Grid_Style">
+        <Setter Property="ItemsControl.Background" Value="Aqua"/>
+    </Style>
+    <Style x:Key="Button_Style">
+        <Setter Property="ItemsControl.Background" Value="Blue"/>
+        <Setter Property="ItemsControl.Foreground" Value="Yellow"/>
+        <Setter Property="ItemsControl.FontSize" Value="12"/>
+    </Style>
+    <Style x:Key="ButtonClick_Style">
+        <Setter Property="ItemsControl.Background" Value="Black"/>
+        <Setter Property="ItemsControl.Foreground" Value="OrangeRed"/>
+        <Setter Property="ItemsControl.FontSize" Value="12"/>
+    </Style>
 </ResourceDictionary>

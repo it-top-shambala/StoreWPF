@@ -11,10 +11,12 @@
     </Window.Resources>
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
-            <Button Content="Магазин"/>
-            <Button Content="Авторизоваться"/>
+            <Button Content="Магазин"
+                    Style="{StaticResource ResourceKey=Button_Style}"/>
+            <Button Content="Авторизоваться"
+                    Style="{StaticResource ResourceKey=Button_Style}"/>
         </StackPanel>
-        <Grid>
+        <Grid Style="{StaticResource ResourceKey=Grid_Style}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -25,16 +27,32 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            <Image Grid.Row="0" Grid.Column="0" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="1" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="2" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="3" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            
-            <Image Grid.Row="1" Grid.Column="0" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="1" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="2" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="3" Source="D:\Programming\Store\Store\img\product.jpg"/>
+
+            <Image Grid.Row="0" Grid.Column="0" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg" 
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="0" Grid.Column="1" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="0" Grid.Column="2" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="0" Grid.Column="3" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+
+            <Image Grid.Row="1" Grid.Column="0" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="1" Grid.Column="1" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="1" Grid.Column="2" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="1" Grid.Column="3" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
         </Grid>
     </StackPanel>
 </Window>
