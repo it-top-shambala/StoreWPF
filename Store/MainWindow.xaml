@@ -33,18 +33,31 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Image Grid.Row="0" Grid.Column="0" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="1" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="2" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="3" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
+            <Image Grid.Row="0" Grid.Column="0" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg" 
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="0" Grid.Column="1" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="0" Grid.Column="2" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="0" Grid.Column="3" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
 
-            <Image Grid.Row="1" Grid.Column="0" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="1" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="2" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="3" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-
+            <Image Grid.Row="1" Grid.Column="0" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="1" Grid.Column="1" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="1" Grid.Column="2" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
+            <Image Grid.Row="1" Grid.Column="3" 
+                   Source="C:\Users\Сергей Шугани\source\repos\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Image_Style}"/>
         </Grid>
-        
-
     </DockPanel>
 </Window>
