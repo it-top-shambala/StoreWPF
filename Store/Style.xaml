@@ -1,4 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+    <Style x:Key="Style_Button">
+        <Setter Property="Control.FontFamily" Value="Times New Roman" />
+        <Setter Property="Control.Margin" Value="5" />
+        <Setter Property="ItemsControl.FontSize" Value="18"/>
+        <Setter Property="ItemsControl.Foreground" Value="Black"/>
+        <Setter Property="ItemsControl.Background" Value="White"/>
+    </Style>
+
+    <Style x:Key="Style_Grid">
+        <Setter Property="ItemsControl.Background" Value="Gray"/>
+    </Style>
+
+    <Style x:Key="Style_Image">
+        <Setter Property="ItemsControl.Margin" Value="8"/>
+        <Setter Property="ItemsControl.Padding" Value="8"/>
+    </Style>
 </ResourceDictionary>

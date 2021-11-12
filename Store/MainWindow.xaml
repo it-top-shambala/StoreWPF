@@ -11,10 +11,12 @@
     </Window.Resources>
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
-            <Button Content="Магазин"/>
-            <Button Content="Авторизоваться"/>
+            <Button Content="Магазин"
+                    Style="{StaticResource Style_Button}"/>
+            <Button Content="Авторизоваться"
+                   Style="{StaticResource Style_Button}"/>
         </StackPanel>
-        <Grid>
+        <Grid Style="{StaticResource ResourceKey=Style_Grid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -25,16 +27,24 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            <Image Grid.Row="0" Grid.Column="0" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="1" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="2" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="3" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            
-            <Image Grid.Row="1" Grid.Column="0" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="1" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="2" Source="D:\Programming\Store\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="3" Source="D:\Programming\Store\Store\img\product.jpg"/>
+
+            <Image Grid.Row="0" Grid.Column="0" Source="D:\Programming\С# WPF\ClassWork\ClassWork6\StoreWPF\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Style_Image}"/>
+            <Image Grid.Row="0" Grid.Column="1" Source="D:\Programming\С# WPF\ClassWork\ClassWork6\StoreWPF\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Style_Image}"/>
+            <Image Grid.Row="0" Grid.Column="2" Source="D:\Programming\С# WPF\ClassWork\ClassWork6\StoreWPF\StoreWPF\Store\img\product.jpg"
+                  Style="{StaticResource ResourceKey=Style_Image}"/>
+            <Image Grid.Row="0" Grid.Column="3" Source="D:\Programming\С# WPF\ClassWork\ClassWork6\StoreWPF\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Style_Image}"/>
+
+            <Image Grid.Row="1" Grid.Column="0" Source="D:\Programming\С# WPF\ClassWork\ClassWork6\StoreWPF\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Style_Image}"/>
+            <Image Grid.Row="1" Grid.Column="1" Source="D:\Programming\С# WPF\ClassWork\ClassWork6\StoreWPF\StoreWPF\Store\img\product.jpg"
+                  Style="{StaticResource ResourceKey=Style_Image}"/>
+            <Image Grid.Row="1" Grid.Column="2" Source="D:\Programming\С# WPF\ClassWork\ClassWork6\StoreWPF\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Style_Image}"/>
+            <Image Grid.Row="1" Grid.Column="3" Source="D:\Programming\С# WPF\ClassWork\ClassWork6\StoreWPF\StoreWPF\Store\img\product.jpg"
+                   Style="{StaticResource ResourceKey=Style_Image}"/>
         </Grid>
     </StackPanel>
 </Window>
