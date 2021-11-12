@@ -87,10 +87,42 @@ namespace Store
         {
             var button = new Button
             {
-                Content = content
+                Content = content,
+
             };
+            button.Click += Button_CardAmount_OnClick;
 
             return button;
+        }
+
+        private void Button_CardAmount_OnClick(object sender, RoutedEventArgs e)
+        {
+            var content = ((Button)sender).Content.ToString();
+
+            var temp = ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content.ToString();
+
+            var res = int.TryParse(temp, out var amount);
+
+            if (!res)
+            {
+                StatusBar.Content = "Ошибка";
+                return;
+            }
+
+            switch (content)
+            {
+                case "-":
+                    --amount;
+                    break;
+                case "+":
+                    ++amount;
+                    break;
+            }
+            if (amount >= 0)
+            {
+                ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = amount.ToString();
+            }
+
         }
 
         private Label CreateCardAmountLabel()

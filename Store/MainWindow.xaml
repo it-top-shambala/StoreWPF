@@ -18,7 +18,7 @@
         </StackPanel>
 
         <StackPanel DockPanel.Dock="Bottom"  Orientation="Vertical">
-            <Label Content="Statys:"/>
+            <Label x:Name="StatusBar" Content="Statys:"/>
         </StackPanel>
 
         <Grid x:Name="Body">
