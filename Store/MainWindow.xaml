@@ -10,19 +10,22 @@
         <ResourceDictionary Source="Style.xaml"/>
     </Window.Resources>
 
-    <DockPanel>
-        
+    <DockPanel LastChildFill="True">
+
         <StackPanel DockPanel.Dock="Top"  Orientation="Horizontal">
             <Button Content="Магазин"/>
             <Button Content="Авторизоваться"/>
         </StackPanel>
-        
-          <StackPanel DockPanel.Dock="Bottom"  Orientation="Vertical">
+
+        <StackPanel DockPanel.Dock="Bottom"  Orientation="Vertical">
             <Label Content="Statys:"/>
         </StackPanel>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
+        <Grid x:Name="Body">
+
+
+
+            <!--<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -41,10 +44,10 @@
             <Image Grid.Row="1" Grid.Column="0" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
             <Image Grid.Row="1" Grid.Column="1" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
             <Image Grid.Row="1" Grid.Column="2" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="3" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
+            <Image Grid.Row="1" Grid.Column="3" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>-->
 
         </Grid>
-        
+
 
     </DockPanel>
 </Window>
