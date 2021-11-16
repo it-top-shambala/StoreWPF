@@ -8,14 +8,13 @@ namespace Store
 {
     public partial class MainWindow : Window
     {
-        private ObservableCollection<OrderLine> Order;
+        public static ObservableCollection<OrderLine> Order;
         public MainWindow()
         {
             InitializeComponent();
             InitGrid(2, 4);
 
             Order = new ObservableCollection<OrderLine>();
-
         }
 
         private void InitGrid(int amountRows, int amountColumns)
@@ -119,20 +118,16 @@ namespace Store
             switch (content)
             {
                 case "-":
-                    --amount;
                     ReduceFromOrder(product);
                     break;
                 case "+":
-                    ++amount;
                     AddToOrder(product);
                     break;
             }
-            if (amount >= 0)
-            {
-                ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = amount.ToString();
-            }
 
-            Button_Basket.Content = (Order.Count > 0) ? $"Корзина ({Order.Count})":"Корзина";
+            ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = AmountProduct(product);
+
+            Button_Basket.Content = (Order.Count > 0) ? $"Корзина ({Order.Count})" : "Корзина";
         }
 
         private Label CreateCardAmountLabel()
@@ -184,7 +179,7 @@ namespace Store
             {
                 foreach (var line in Order)
                 {
-                    if (line.ProductName == product && line.ProductAmount>1)
+                    if (line.ProductName == product && line.ProductAmount > 1)
                     {
                         line.ProductAmount--;
                     }
@@ -199,7 +194,24 @@ namespace Store
 
         private void Button_Basket_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Order.Count.ToString());
+            var basket = new WindowBasket();
+
+            basket.Show();
+        }
+
+        private int AmountProduct(string product)
+        {
+            if (!isNewLine(product))
+            {
+                foreach (var line in Order)
+                {
+                    if (line.ProductName == product)
+                    {
+                        return line.ProductAmount;
+                    }
+                }
+            }
+            return 0;
         }
     }
 }
