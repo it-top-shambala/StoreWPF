@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -7,10 +8,14 @@ namespace Store
 {
     public partial class MainWindow : Window
     {
+        private ObservableCollection<OrderLine> Order;
         public MainWindow()
         {
             InitializeComponent();
             InitGrid(2, 4);
+
+            Order = new ObservableCollection<OrderLine>();
+
         }
 
         private void InitGrid(int amountRows, int amountColumns)
@@ -36,7 +41,7 @@ namespace Store
             {
                 for (int j = 0; j < amountColumns; j++)
                 {
-                    var card = CreateCard();
+                    var card = CreateCard($"Product {i},{j}");
                     Grid.SetRow(card, i);
                     Grid.SetColumn(card, j);
 
@@ -45,10 +50,10 @@ namespace Store
             }
         }
 
-        private StackPanel CreateCard()
+        private StackPanel CreateCard(string productName)
         {
             var cardImage = new Image();
-            cardImage.Source = new BitmapImage(new Uri(@"D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"));
+            cardImage.Source = new BitmapImage(new Uri(@"C:\Users\Курицын Алексей\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"));
 
             var card = new StackPanel();
 
@@ -56,7 +61,7 @@ namespace Store
 
             card.Children.Add(cardImage);
             card.Children.Add(CreateCardAmount());
-            card.Children.Add(CreateCardAnnotation("Product name"));
+            card.Children.Add(CreateCardAnnotation(productName));
 
             return card;
         }
@@ -101,6 +106,8 @@ namespace Store
 
             var temp = ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content.ToString();
 
+            var product = ((Label)((StackPanel)((StackPanel)(((Button)sender).Parent)).Parent).Children[2]).Content.ToString();
+
             var res = int.TryParse(temp, out var amount);
 
             if (!res)
@@ -113,9 +120,11 @@ namespace Store
             {
                 case "-":
                     --amount;
+                    ReduceFromOrder(product);
                     break;
                 case "+":
                     ++amount;
+                    AddToOrder(product);
                     break;
             }
             if (amount >= 0)
@@ -123,6 +132,7 @@ namespace Store
                 ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = amount.ToString();
             }
 
+            Button_Basket.Content = (Order.Count > 0) ? $"Корзина ({Order.Count})":"Корзина";
         }
 
         private Label CreateCardAmountLabel()
@@ -133,6 +143,63 @@ namespace Store
             };
 
             return label;
+        }
+
+        private bool isNewLine(string product)
+        {
+            // Проверяет - это новый товар в корзине? 
+            bool newLine = true;
+            foreach (var line in Order)
+            {
+                if (line.ProductName == product)
+                {
+                    newLine = false;
+                    break;
+                }
+            }
+            return newLine;
+        }
+
+        private void AddToOrder(string product)
+        {
+            if (isNewLine(product))
+            {
+                Order.Add(new OrderLine { ProductName = product, ProductAmount = 1 });
+            }
+            else
+            {
+                foreach (var line in Order)
+                {
+                    if (line.ProductName == product)
+                    {
+                        line.ProductAmount++;
+                    }
+                }
+            }
+        }
+
+        private void ReduceFromOrder(string product)
+        {
+            if (!isNewLine(product))
+            {
+                foreach (var line in Order)
+                {
+                    if (line.ProductName == product && line.ProductAmount>1)
+                    {
+                        line.ProductAmount--;
+                    }
+                    else
+                    {
+                        Order.Remove(line);
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void Button_Basket_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Order.Count.ToString());
         }
     }
 }
