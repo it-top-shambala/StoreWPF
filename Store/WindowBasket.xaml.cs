@@ -23,7 +23,7 @@ namespace Store
         {
             InitializeComponent();
 
-            orderGrid.ItemsSource = MainWindow.Order;
+            DataGrid_Orders.ItemsSource = MainWindow.Order;
         }
 
     }

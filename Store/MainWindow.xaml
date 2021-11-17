@@ -17,19 +17,10 @@
             <Button Content="Авторизоваться"/>
         </StackPanel>
 
-        <StackPanel DockPanel.Dock="Bottom"  Orientation="Vertical">
-            <Label x:Name="StatusBar" Content="Statys:"/>
-        </StackPanel>
-
-        <Grid x:Name="Body">
-
-        <StackPanel x:Name="Menu" DockPanel.Dock="Top" Orientation="Horizontal">
-            <Button Content="Магазин" />
-            <Button Content="Авторизоваться" />
-        </StackPanel>
-
         <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical">
-            <Label x:Name="StatusBar" Content="Statys:" />
+            <Label x:Name="Label_StatusBar" Content="Status: " />
         </StackPanel>
+        
+        <Grid x:Name="Grid_Body"/>
     </DockPanel>
 </Window>

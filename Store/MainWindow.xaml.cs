@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -19,21 +20,18 @@ namespace Store
 
         private void InitGrid(int amountRows, int amountColumns)
         {
-            Body.HorizontalAlignment = HorizontalAlignment.Center;
-            Body.VerticalAlignment = VerticalAlignment.Center;
-
-            Body.RowDefinitions.Clear();
-            Body.ColumnDefinitions.Clear();
+            Grid_Body.RowDefinitions.Clear();
+            Grid_Body.ColumnDefinitions.Clear();
 
             for (int i = 0; i < amountRows; i++)
             {
-                Body.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                Grid_Body.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
 
             for (int j = 0; j < amountColumns; j++)
             {
 
-                Body.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+                Grid_Body.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
             }
 
             for (int i = 0; i < amountRows; i++)
@@ -44,19 +42,22 @@ namespace Store
                     Grid.SetRow(card, i);
                     Grid.SetColumn(card, j);
 
-                    Body.Children.Add(card);
+                    Grid_Body.Children.Add(card);
                 }
             }
         }
 
         private StackPanel CreateCard(string productName)
         {
-            var cardImage = new Image();
-            cardImage.Source = new BitmapImage(new Uri(@"C:\Users\Курицын Алексей\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"));
+            var cardImage = new Image
+            {
+                Source = new BitmapImage(new Uri(@"D:\Programming\Education\ITStep\Shambala\StoreWPF\Store\img\product.jpg"))
+            };
 
-            var card = new StackPanel();
-
-            card.Orientation = Orientation.Vertical;
+            var card = new StackPanel
+            {
+                Orientation = Orientation.Vertical
+            };
 
             card.Children.Add(cardImage);
             card.Children.Add(CreateCardAmount());
@@ -77,8 +78,10 @@ namespace Store
 
         private StackPanel CreateCardAmount()
         {
-            var cardAmount = new StackPanel();
-            cardAmount.Orientation = Orientation.Horizontal;
+            var cardAmount = new StackPanel
+            {
+                Orientation = Orientation.Horizontal
+            };
 
             cardAmount.Children.Add(CreateCardAmountButton("-"));
             cardAmount.Children.Add(CreateCardAmountLabel());
@@ -110,18 +113,7 @@ namespace Store
         private void Button_CardAmount_OnClick(object sender, RoutedEventArgs e)
         {
             var content = ((Button)sender).Content.ToString();
-
-            var temp = ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content.ToString();
-
-            var product = ((Label)((StackPanel)((StackPanel)(((Button)sender).Parent)).Parent).Children[2]).Content.ToString();
-
-            var res = int.TryParse(temp, out var amount);
-
-            if (!res)
-            {
-                StatusBar.Content = "Ошибка";
-                return;
-            }
+            var product = ((Label)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[2]).Content.ToString();
 
             switch (content)
             {
@@ -138,64 +130,44 @@ namespace Store
             Button_Basket.Content = (Order.Count > 0) ? $"Корзина ({Order.Count})" : "Корзина";
         }
 
-        private Label CreateCardAmountLabel()
-        {
-            var label = new Label
-            {
-                Content = "0"
-            };
-
-            return label;
-        }
-
-        private bool isNewLine(string product)
+        private bool IsNewLine(string product)
         {
             // Проверяет - это новый товар в корзине? 
-            bool newLine = true;
-            foreach (var line in Order)
-            {
-                if (line.ProductName == product)
-                {
-                    newLine = false;
-                    break;
-                }
-            }
-            return newLine;
+            return Order.All(line => line.ProductName != product);
         }
 
         private void AddToOrder(string product)
         {
-            if (isNewLine(product))
+            if (IsNewLine(product))
             {
                 Order.Add(new OrderLine { ProductName = product, ProductAmount = 1 });
             }
             else
             {
-                foreach (var line in Order)
+                foreach (var orderLine in Order)
                 {
-                    if (line.ProductName == product)
-                    {
-                        line.ProductAmount++;
-                    }
+                    if (orderLine.ProductName != product) continue;
+                    
+                    orderLine.ProductAmount++;
+                    break;
                 }
             }
         }
 
         private void ReduceFromOrder(string product)
         {
-            if (!isNewLine(product))
+            if (IsNewLine(product)) return;
+            
+            foreach (var orderLine in Order)
             {
-                foreach (var line in Order)
+                if (orderLine.ProductName == product && orderLine.ProductAmount > 1)
                 {
-                    if (line.ProductName == product && line.ProductAmount > 1)
-                    {
-                        line.ProductAmount--;
-                    }
-                    else
-                    {
-                        Order.Remove(line);
-                        break;
-                    }
+                    orderLine.ProductAmount--;
+                }
+                else
+                {
+                    Order.Remove(orderLine);
+                    break;
                 }
             }
         }
@@ -209,17 +181,7 @@ namespace Store
 
         private int AmountProduct(string product)
         {
-            if (!isNewLine(product))
-            {
-                foreach (var line in Order)
-                {
-                    if (line.ProductName == product)
-                    {
-                        return line.ProductAmount;
-                    }
-                }
-            }
-            return 0;
+            return !IsNewLine(product) ? (from orderLine in Order where orderLine.ProductName == product select orderLine.ProductAmount).FirstOrDefault() : 0;
         }
     }
 }
