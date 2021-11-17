@@ -1,66 +1,66 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-
 namespace Store
 {
     public partial class MainWindow : Window
     {
+        public static ObservableCollection<OrderLine> Order;
         public MainWindow()
         {
             InitializeComponent();
-
             InitGrid(2, 4);
+
+            Order = new ObservableCollection<OrderLine>();
         }
 
         private void InitGrid(int amountRows, int amountColumns)
         {
-            Body.HorizontalAlignment = HorizontalAlignment.Center;
-            Body.VerticalAlignment = VerticalAlignment.Center;
-
-            Body.RowDefinitions.Clear();
-            Body.ColumnDefinitions.Clear();
+            Grid_Body.RowDefinitions.Clear();
+            Grid_Body.ColumnDefinitions.Clear();
 
             for (int i = 0; i < amountRows; i++)
             {
-                Body.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                Grid_Body.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
 
-            for (int i = 0; i < amountColumns; i++)
+            for (int j = 0; j < amountColumns; j++)
             {
-                Body.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+
+                Grid_Body.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
             }
 
             for (int i = 0; i < amountRows; i++)
             {
                 for (int j = 0; j < amountColumns; j++)
                 {
-                    var card = CreateCard();
-
+                    var card = CreateCard($"Product {i},{j}");
                     Grid.SetRow(card, i);
                     Grid.SetColumn(card, j);
 
-                    Body.Children.Add(card);
+                    Grid_Body.Children.Add(card);
                 }
             }
         }
 
-        private StackPanel CreateCard()
+        private StackPanel CreateCard(string productName)
         {
-            var card = new StackPanel
-            {
-                Orientation = Orientation.Vertical
-            };
-
             var cardImage = new Image
             {
                 Source = new BitmapImage(new Uri(@"C:\Users\PavelL\source\repos\StoreWPF\Store\img\product.jpg"))
             };
 
+            var card = new StackPanel
+            {
+                Orientation = Orientation.Vertical
+            };
+
             card.Children.Add(cardImage);
             card.Children.Add(CreateCardAmount());
-            card.Children.Add(CreateCardAnnotation("Product name"));
+            card.Children.Add(CreateCardAnnotation(productName));
 
             return card;
         }
@@ -71,6 +71,7 @@ namespace Store
             {
                 Content = annotation
             };
+
             return label;
         }
 
@@ -101,40 +102,85 @@ namespace Store
         {
             var button = new Button
             {
-                Content = content
+                Content = content,
+
             };
             button.Click += Button_CardAmount_OnClick;
-
             return button;
         }
 
         private void Button_CardAmount_OnClick(object sender, RoutedEventArgs e)
         {
             var content = ((Button)sender).Content.ToString();
-            var temp = ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content.ToString();
-            var res = int.TryParse(temp, out var amount);
-
-            if (!res)
-            {
-                StatusBar.Content = "Ошибка";
-                return;
-            }
+            var product = ((Label)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[2]).Content.ToString();
 
             switch (content)
             {
                 case "-":
-                    --amount;
+                    ReduceFromOrder(product);
                     break;
                 case "+":
-                    ++amount;
+                    AddToOrder(product);
                     break;
             }
 
-            if (amount < 0)
+            ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = AmountProduct(product);
+
+            Button_Basket.Content = (Order.Count > 0) ? $"Корзина ({Order.Count})" : "Корзина";
+        }
+
+        private bool IsNewLine(string product)
+        {
+            // Проверяет - это новый товар в корзине? 
+            return Order.All(line => line.ProductName != product);
+        }
+
+        private void AddToOrder(string product)
+        {
+            if (IsNewLine(product))
             {
-                amount = 0;
+                Order.Add(new OrderLine { ProductName = product, ProductAmount = 1 });
             }
-            ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = amount.ToString();
+            else
+            {
+                foreach (var orderLine in Order)
+                {
+                    if (orderLine.ProductName != product) continue;
+
+                    orderLine.ProductAmount++;
+                    break;
+                }
+            }
+        }
+
+        private void ReduceFromOrder(string product)
+        {
+            if (IsNewLine(product)) return;
+
+            foreach (var orderLine in Order)
+            {
+                if (orderLine.ProductName == product && orderLine.ProductAmount > 1)
+                {
+                    orderLine.ProductAmount--;
+                }
+                else
+                {
+                    Order.Remove(orderLine);
+                    break;
+                }
+            }
+        }
+
+        private void Button_Basket_Click(object sender, RoutedEventArgs e)
+        {
+            var basket = new WindowBasket();
+
+            basket.Show();
+        }
+
+        private int AmountProduct(string product)
+        {
+            return !IsNewLine(product) ? (from orderLine in Order where orderLine.ProductName == product select orderLine.ProductAmount).FirstOrDefault() : 0;
         }
     }
 }
