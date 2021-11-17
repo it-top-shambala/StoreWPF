@@ -5,13 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Store"
         mc:Ignorable="d"
-        Title="Store" Height="450" Width="800">
+        Title="Store" Height="800" Width="800">
     <Window.Resources>
-        <ResourceDictionary Source="Style.xaml"/>
+        <ResourceDictionary Source="Style.xaml" />
     </Window.Resources>
 
     <DockPanel LastChildFill="True">
-
         <StackPanel DockPanel.Dock="Top"  Orientation="Horizontal">
             <Button Content="Магазин"/>
             <Button x:Name="Button_Basket" Content="Корзина" Click="Button_Basket_Click"/>
@@ -24,31 +23,13 @@
 
         <Grid x:Name="Body">
 
+        <StackPanel x:Name="Menu" DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Content="Магазин" />
+            <Button Content="Авторизоваться" />
+        </StackPanel>
 
-
-            <!--<Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Image Grid.Row="0" Grid.Column="0" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="1" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="2" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="0" Grid.Column="3" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-
-            <Image Grid.Row="1" Grid.Column="0" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="1" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="2" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>
-            <Image Grid.Row="1" Grid.Column="3" Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\StoreWPF\Store\img\product.jpg"/>-->
-
-        </Grid>
-
-
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical">
+            <Label x:Name="StatusBar" Content="Statys:" />
+        </StackPanel>
     </DockPanel>
 </Window>

@@ -87,6 +87,15 @@ namespace Store
             return cardAmount;
         }
 
+        private Label CreateCardAmountLabel()
+        {
+            var label = new Label
+            {
+                Content = "0",
+            };
+            return label;
+        }
+
         private Button CreateCardAmountButton(string content)
         {
             var button = new Button
@@ -95,7 +104,6 @@ namespace Store
 
             };
             button.Click += Button_CardAmount_OnClick;
-
             return button;
         }
 
