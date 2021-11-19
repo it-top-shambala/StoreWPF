@@ -51,7 +51,7 @@ namespace Store
         {
             var cardImage = new Image
             {
-                Source = new BitmapImage(new Uri(@"D:\Programming\Education\ITStep\Shambala\StoreWPF\Store\img\product.jpg"))
+                Source = new BitmapImage(new Uri(Environment.CurrentDirectory + @"\img\product.jpg"))
             };
 
             var card = new StackPanel
@@ -147,7 +147,7 @@ namespace Store
                 foreach (var orderLine in Order)
                 {
                     if (orderLine.ProductName != product) continue;
-                    
+
                     orderLine.ProductAmount++;
                     break;
                 }
@@ -157,7 +157,7 @@ namespace Store
         private void ReduceFromOrder(string product)
         {
             if (IsNewLine(product)) return;
-            
+
             foreach (var orderLine in Order)
             {
                 if (orderLine.ProductName == product && orderLine.ProductAmount > 1)
@@ -182,6 +182,29 @@ namespace Store
         private int AmountProduct(string product)
         {
             return !IsNewLine(product) ? (from orderLine in Order where orderLine.ProductName == product select orderLine.ProductAmount).FirstOrDefault() : 0;
+        }
+
+        private void Button_CreateDbConnectionTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            DbConnectionLib.DbConnection template = new DbConnectionLib.DbConnection
+            {
+                Server = "myServerAddress",
+                Database = "myDataBase",
+                Uid = "myUsername",
+                Pwd = "myPassword"
+            };
+
+            var fileConnection = Environment.CurrentDirectory + @"\DbConnection.json";
+
+            DbConnectionLib.DataBase bdTemplate = new DbConnectionLib.DataBase();
+
+            if (bdTemplate.SerializeJson(fileConnection, template))
+            {
+                MessageBox.Show(
+                    $"Успешное создание шаблонного файла JSON для подключения к БД\n" +
+                    $"Шаблонный файл: {fileConnection}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
         }
     }
 }

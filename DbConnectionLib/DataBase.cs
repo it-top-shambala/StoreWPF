@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.IO;
+using System.Text.Json;
 using static System.Text.Json.JsonSerializer;
 
 namespace DbConnectionLib
@@ -38,6 +39,20 @@ namespace DbConnectionLib
         }
 
         #endregion
+
+        public bool SerializeJson(string path, DbConnection dbConnection)
+        {
+            Info?.Invoke("Создание шаблона JSON для подключения к БД");
+
+            using (var file = new FileStream(path, FileMode.OpenOrCreate))
+            {
+                JsonSerializer.SerializeAsync<DbConnection>(file, dbConnection);
+            }
+
+            Info?.Invoke($"Успешное создание шаблонного файла JSON для подключения к БД");
+            Info?.Invoke($"Шаблонный файл: {path}");
+            return true;
+        }
 
         #region Init
 

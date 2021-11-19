@@ -12,7 +12,7 @@
 
     <ItemGroup>
       <None Update="img\product.jpg">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 

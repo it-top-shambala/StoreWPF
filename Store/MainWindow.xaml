@@ -15,6 +15,9 @@
             <Button Content="Магазин"/>
             <Button x:Name="Button_Basket" Content="Корзина" Click="Button_Basket_Click"/>
             <Button Content="Авторизоваться"/>
+            <Button x:Name="Button_CreateDbConnectionTemplate"
+                    Content="Шаблон подключения"
+                    Click="Button_CreateDbConnectionTemplate_Click"/>
         </StackPanel>
 
         <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical">
