@@ -1,8 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.IO;
-using System.Text.Json;
-using static System.Text.Json.JsonSerializer;
 
 namespace DbConnectionLib
 {
@@ -12,7 +9,6 @@ namespace DbConnectionLib
 
         private MySqlConnection _db;
         private MySqlCommand _command;
-        private DbConnection _connection;
 
         public event Action<string> Info;
         public event Action<string> Error;
@@ -40,51 +36,19 @@ namespace DbConnectionLib
 
         #endregion
 
-        public bool SerializeJson(string path, DbConnection dbConnection)
-        {
-            Info?.Invoke("Создание шаблона JSON для подключения к БД");
-
-            using (var file = new FileStream(path, FileMode.OpenOrCreate))
-            {
-                JsonSerializer.SerializeAsync<DbConnection>(file, dbConnection);
-            }
-
-            Info?.Invoke($"Успешное создание шаблонного файла JSON для подключения к БД");
-            Info?.Invoke($"Шаблонный файл: {path}");
-            return true;
-        }
-
         #region Init
-
-        private bool DeserializeJson(string path)
-        {
-            Info?.Invoke("Получение данных из JSON для подключения к БД");
-            try
-            {
-                using var file = new FileStream(path, FileMode.Open);
-                _connection = DeserializeAsync<DbConnection>(file).Result;
-            }
-            catch (Exception)
-            {
-                Error?.Invoke("Ошибка получения данных из JSON для подключения к БД");
-                return false;
-            }
-
-            Success?.Invoke("Успешное получение данных из JSON для подключения к БД");
-            return true;
-        }
 
         public bool Init(string path)
         {
             Info?.Invoke("Инициализация");
-            var res = DeserializeJson(path);
+            var connection = DbConnection.DeserializeJson(path);
 
-            if (!res)
+            if (connection is null)
             {
                 Error?.Invoke("Ошибка инициализации");
                 return false;
             }
-            _db.ConnectionString = _connection.ToString();
+            _db.ConnectionString = connection.ToString();
             _command.Connection = _db;
 
             Success?.Invoke("Успех инициализации");
@@ -93,19 +57,7 @@ namespace DbConnectionLib
 
         public bool Init()
         {
-            Info?.Invoke("Инициализация");
-            var res = DeserializeJson("db_connection.json");
-
-            if (!res)
-            {
-                Error?.Invoke("Ошибка инициализации");
-                return false;
-            }
-            _db.ConnectionString = _connection.ToString();
-            _command.Connection = _db;
-
-            Error?.Invoke("Ошибка инициализации");
-            return true;
+            return Init("db_connection.json");
         }
 
         #endregion

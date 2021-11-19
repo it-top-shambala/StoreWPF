@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using DbConnectionLib;
 
 namespace Store
 {
@@ -127,7 +128,7 @@ namespace Store
 
             ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = AmountProduct(product);
 
-            Button_Basket.Content = (Order.Count > 0) ? $"Корзина ({Order.Count})" : "Корзина";
+            Button_Basket.Content = Order.Count > 0 ? $"Корзина ({Order.Count})" : "Корзина";
         }
 
         private bool IsNewLine(string product)
@@ -184,9 +185,10 @@ namespace Store
             return !IsNewLine(product) ? (from orderLine in Order where orderLine.ProductName == product select orderLine.ProductAmount).FirstOrDefault() : 0;
         }
 
+        //TODO Переместить в админку
         private void Button_CreateDbConnectionTemplate_Click(object sender, RoutedEventArgs e)
         {
-            DbConnectionLib.DbConnection template = new DbConnectionLib.DbConnection
+            var template = new DbConnection
             {
                 Server = "myServerAddress",
                 Database = "myDataBase",
@@ -194,17 +196,14 @@ namespace Store
                 Pwd = "myPassword"
             };
 
-            var fileConnection = Environment.CurrentDirectory + @"\DbConnection.json";
+            var fileConnection = Environment.CurrentDirectory + @"\db_connection.json";
 
-            DbConnectionLib.DataBase bdTemplate = new DbConnectionLib.DataBase();
-
-            if (bdTemplate.SerializeJson(fileConnection, template))
+            if (template.SerializeJson(fileConnection))
             {
                 MessageBox.Show(
                     $"Успешное создание шаблонного файла JSON для подключения к БД\n" +
                     $"Шаблонный файл: {fileConnection}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
         }
     }
 }
