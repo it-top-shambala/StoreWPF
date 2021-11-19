@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>fec505cf-4f6a-42ba-8133-9bfe022b833f.SCHEMA:host1323541_store</OriginalElement>
+  <nodes>
+    <node x="226.00000000000003" y="231.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_roles</node>
+    <node x="387.24" y="665.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_product_amounts</node>
+    <node x="272.5" y="28.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_role_types</node>
+    <node x="54.5" y="0.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_accounts</node>
+    <node x="25.0" y="462.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_baskets</node>
+    <node x="381.33000000000004" y="434.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_products</node>
+    <node x="656.24" y="665.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_product_prices</node>
+    <node x="182.24000000000004" y="637.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_orders</node>
+    <node x="0.0" y="203.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_users</node>
+    <node x="-22.759999999999962" y="665.0">fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_sales</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_product_prices" target="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_products" relationship="REFERENCES">
+      <point x="0.0" y="-62.5" />
+      <point x="767.74" y="612.0" />
+      <point x="465.33000000000004" y="612.0" />
+      <point x="0.0" y="76.5" />
+    </edge>
+    <edge source="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_orders" target="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_baskets" relationship="REFERENCES">
+      <point x="-46.25" y="-90.5" />
+      <point x="228.49000000000004" y="612.0" />
+      <point x="103.0" y="612.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_baskets" target="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_users" relationship="REFERENCES">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="90.5" />
+    </edge>
+    <edge source="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_roles" target="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_role_types" relationship="REFERENCES">
+      <point x="46.0" y="-62.5" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_product_amounts" target="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_products" relationship="REFERENCES">
+      <point x="0.0" y="-62.5" />
+      <point x="511.74" y="612.0" />
+      <point x="465.33000000000004" y="612.0" />
+      <point x="0.0" y="76.5" />
+    </edge>
+    <edge source="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_users" target="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_accounts" relationship="REFERENCES">
+      <point x="0.0" y="-90.5" />
+      <point x="-49.5" y="76.5" />
+    </edge>
+    <edge source="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_sales" target="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_baskets" relationship="REFERENCES">
+      <point x="0.0" y="-62.5" />
+      <point x="69.74000000000004" y="612.0" />
+      <point x="103.0" y="612.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_orders" target="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_products" relationship="REFERENCES">
+      <point x="46.25" y="-90.5" />
+      <point x="320.99" y="612.0" />
+      <point x="465.33000000000004" y="612.0" />
+      <point x="0.0" y="76.5" />
+    </edge>
+    <edge source="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_roles" target="fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_accounts" relationship="REFERENCES">
+      <point x="-46.0" y="-62.5" />
+      <point x="272.0" y="178.0" />
+      <point x="203.0" y="178.0" />
+      <point x="49.5" y="76.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7410501193317423" showDependencies="false" x="420.5" y="409.0" />
+  <SelectedNodes>
+    <node>fec505cf-4f6a-42ba-8133-9bfe022b833f.TABLE:host1323541_store.tab_sales</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
