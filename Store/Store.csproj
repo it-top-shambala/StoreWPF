@@ -7,8 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DbConnectionLib\DbConnectionLib.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
       <None Update="img\product.jpg">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 
