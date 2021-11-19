@@ -1,4 +1,5 @@
-﻿CREATE TABLE tab_products
+﻿# Создание таблиц
+CREATE TABLE tab_products
 (
     id         INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name       VARCHAR(50) NOT NULL,
@@ -98,3 +99,18 @@ CREATE TABLE tab_sales
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
+
+# Создание представлений
+CREATE VIEW view_products AS
+SELECT tab_products.id AS 'id',
+       tab_products.name AS 'name',
+       tab_product_prices.price AS 'price',
+       tab_product_amounts.amount AS 'amount',
+       tab_products.annotation AS 'annotation',
+       tab_products.image AS 'image'
+FROM tab_products
+         JOIN tab_product_amounts
+              ON tab_products.id = tab_product_amounts.product_id
+         JOIN tab_product_prices
+              ON tab_products.id = tab_product_prices.product_id
+ORDER BY tab_products.name;
