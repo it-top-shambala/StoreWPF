@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.IO;
 
 namespace DbConnectionLib
 {
@@ -10,8 +9,6 @@ namespace DbConnectionLib
 
         private MySqlConnection _db;
         private MySqlCommand _command;
-        
-        private DbConnection _connection;
 
         public event Action<string> Info;
         public event Action<string> Error;
@@ -44,14 +41,14 @@ namespace DbConnectionLib
         public bool Init(string path)
         {
             Info?.Invoke("Инициализация");
-            var _connection = DbConnection.DeserializeJson(path);
+            var connection = DbConnection.DeserializeJson(path);
 
-            if (_connection is null)
+            if (connection is null)
             {
                 Error?.Invoke("Ошибка инициализации");
                 return false;
             }
-            _db.ConnectionString = _connection.ToString();
+            _db.ConnectionString = connection.ToString();
             _command.Connection = _db;
 
             Success?.Invoke("Успех инициализации");
