@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store\Store.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbConnectionLib", "DbConnectionLib\DbConnectionLib.csproj", "{279EBFD1-0290-46BD-B020-7FD9BB5962A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseLib", "DataBaseLib\DataBaseLib.csproj", "{F36FF896-D407-4FB5-A251-8B45F2CE8FD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{279EBFD1-0290-46BD-B020-7FD9BB5962A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{279EBFD1-0290-46BD-B020-7FD9BB5962A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{279EBFD1-0290-46BD-B020-7FD9BB5962A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F36FF896-D407-4FB5-A251-8B45F2CE8FD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F36FF896-D407-4FB5-A251-8B45F2CE8FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F36FF896-D407-4FB5-A251-8B45F2CE8FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F36FF896-D407-4FB5-A251-8B45F2CE8FD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
