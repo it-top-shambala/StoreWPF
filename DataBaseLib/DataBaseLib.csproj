@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DataModelLib\DataModelLib.csproj" />
       <ProjectReference Include="..\DbConnectionLib\DbConnectionLib.csproj" />
     </ItemGroup>
 
