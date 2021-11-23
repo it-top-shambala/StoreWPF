@@ -1,4 +1,4 @@
-﻿# Создание таблиц
+﻿--# Создание таблиц
 CREATE TABLE tab_products
 (
     id         INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -100,7 +100,7 @@ CREATE TABLE tab_sales
         ON DELETE NO ACTION
 );
 
-# Создание представлений
+--# Создание представлений
 CREATE VIEW view_products AS
 SELECT tab_products.id AS 'id',
        tab_products.name AS 'name',
@@ -114,3 +114,22 @@ FROM tab_products
          JOIN tab_product_prices
               ON tab_products.id = tab_product_prices.product_id
 ORDER BY tab_products.name;
+
+--  Информация о всех пользователях
+SELECT
+    tab_users.id AS 'id',
+    tab_users.last_name AS 'last_name',
+    tab_users.first_name AS 'first_name',
+    tab_users.email AS 'email',
+    tab_users.phone AS 'phone',
+    tab_accounts.login AS 'login',
+    tab_accounts.is_active AS 'is_active',
+    tab_role_types.name AS 'role'
+FROM tab_users
+    JOIN tab_accounts
+        ON tab_users.id = tab_accounts.id
+    JOIN tab_roles
+        ON tab_accounts.id = tab_roles.account_id
+    JOIN tab_role_types
+        ON tab_roles.role_type_id = tab_role_types.id
+ORDER BY tab_users.last_name;
