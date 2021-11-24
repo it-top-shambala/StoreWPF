@@ -100,7 +100,7 @@ CREATE TABLE tab_sales
         ON DELETE NO ACTION
 );
 
---# Создание представлений
+-- Создание представлений
 CREATE VIEW view_products AS
 SELECT tab_products.id AS 'id',
        tab_products.name AS 'name',
