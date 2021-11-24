@@ -19,9 +19,9 @@ namespace DataBaseLib
             var sql = "SELECT * FROM view_products";
             var res = _db.ExecuteSelect(in sql, out var outputData);
 
-            if (!res) throw new Exception(); //TODO Продумать свой тип исключения
+            if (!res) throw new Exception("Error #01: Ответ из базы данных не был получен."); //DONE Продумать свой тип исключения
 
-            if (!outputData.HasRows) throw new Exception(); //TODO Продумать свой тип исключения
+            if (!outputData.HasRows) throw new Exception("Error #02: Результат запроса вернул пустую таблицу."); //DONE Продумать свой тип исключения
 
             var products = new List<Product>();
             
