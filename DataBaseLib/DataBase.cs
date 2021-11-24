@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DataBaseLib.Exceptions;
 using DataModelLib;
 
 namespace DataBaseLib
@@ -16,12 +17,13 @@ namespace DataBaseLib
 
         public List<Product> GetAllProducts()
         {
-            var sql = "SELECT * FROM view_products";
+            const string table_name = "view_products";
+            var sql = $"SELECT * FROM {table_name}";
             var res = _db.ExecuteSelect(in sql, out var outputData);
 
-            if (!res) throw new Exception("Error #01: Ответ из базы данных не был получен."); //DONE Продумать свой тип исключения
+            if (!res) throw new EmptyTableException("Ответ из базы данных не был получен.", TypeException.NotAnswer, table_name); //DONE Продумать свой тип исключения
 
-            if (!outputData.HasRows) throw new Exception("Error #02: Результат запроса вернул пустую таблицу."); //DONE Продумать свой тип исключения
+            if (!outputData.HasRows) throw new NotAnswerException("Результат запроса вернул пустую таблицу.", TypeException.EmptyTable, table_name); //DONE Продумать свой тип исключения
 
             var products = new List<Product>();
             
