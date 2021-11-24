@@ -1,4 +1,4 @@
-﻿--# Создание таблиц
+-- Создание таблиц
 CREATE TABLE tab_products
 (
     id         INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
