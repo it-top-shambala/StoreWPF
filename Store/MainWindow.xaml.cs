@@ -10,7 +10,11 @@ namespace Store
 {
     public partial class MainWindow : Window
     {
+        #region Values
         public static ObservableCollection<OrderLine> Order;
+        #endregion
+
+        #region Constructors
         public MainWindow()
         {
             InitializeComponent();
@@ -18,6 +22,8 @@ namespace Store
 
             Order = new ObservableCollection<OrderLine>();
         }
+        #endregion
+
 
         private void InitGrid(int amountRows, int amountColumns)
         {
@@ -48,6 +54,7 @@ namespace Store
             }
         }
 
+        #region CreateCard
         private StackPanel CreateCard(string productName)
         {
             var cardImage = new Image
@@ -110,6 +117,8 @@ namespace Store
             button.Click += Button_CardAmount_OnClick;
             return button;
         }
+        #endregion
+
 
         private void Button_CardAmount_OnClick(object sender, RoutedEventArgs e)
         {
@@ -130,6 +139,7 @@ namespace Store
 
             Button_Basket.Content = Order.Count > 0 ? $"Корзина ({Order.Count})" : "Корзина";
         }
+
 
         private bool IsNewLine(string product)
         {
