@@ -29,6 +29,8 @@ namespace Store
             Order = new ObservableCollection<OrderLine>();
             Products = new ObservableCollection<Product>(new DataBaseLib.DataBase().GetAllProducts());
         }
+        #endregion
+
 
         #endregion
 
@@ -127,6 +129,8 @@ namespace Store
             button.Click += Button_CardAmount_OnClick;
             return button;
         }
+        #endregion
+
 
         private void Button_CardAmount_OnClick(object sender, RoutedEventArgs e)
         {
