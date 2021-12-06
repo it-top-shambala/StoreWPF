@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable enable
+using System;
+
 
 namespace DataBaseLib.Exceptions
 {
@@ -13,10 +15,12 @@ namespace DataBaseLib.Exceptions
             TableName = tableName;
         }
 
-        protected DataBaseException(string? message, TypeException typeException, string tableName) : base (message)
+        protected DataBaseException(string? message, TypeException typeException, string tableName) : base(message)
+
         {
             TypeException = typeException;
             TableName = tableName;
         }
     }
+
 }

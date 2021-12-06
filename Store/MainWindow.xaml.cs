@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using DataModelLib;
 using DbConnectionLib;
 
 namespace Store
@@ -11,19 +13,28 @@ namespace Store
     public partial class MainWindow : Window
     {
         #region Values
+
         public static ObservableCollection<OrderLine> Order;
+        public static ObservableCollection<Product> Products;
+
         #endregion
 
         #region Constructors
+
         public MainWindow()
         {
             InitializeComponent();
             InitGrid(2, 4);
 
             Order = new ObservableCollection<OrderLine>();
+            Products = new ObservableCollection<Product>(new DataBaseLib.DataBase().GetAllProducts());
         }
         #endregion
 
+
+        #endregion
+
+        #region CreateGrid
 
         private void InitGrid(int amountRows, int amountColumns)
         {
@@ -37,7 +48,6 @@ namespace Store
 
             for (int j = 0; j < amountColumns; j++)
             {
-
                 Grid_Body.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
             }
 
@@ -45,7 +55,7 @@ namespace Store
             {
                 for (int j = 0; j < amountColumns; j++)
                 {
-                    var card = CreateCard($"Product {i},{j}");
+                    var card = CreateCard(new Product());
                     Grid.SetRow(card, i);
                     Grid.SetColumn(card, j);
 
@@ -54,12 +64,15 @@ namespace Store
             }
         }
 
+        #endregion
+
         #region CreateCard
-        private StackPanel CreateCard(string productName)
+
+        private StackPanel CreateCard(Product product)
         {
             var cardImage = new Image
             {
-                Source = new BitmapImage(new Uri(Environment.CurrentDirectory + @"\img\product.jpg"))
+                Source = new BitmapImage(new Uri(Environment.CurrentDirectory + @"\img\product.jpg")) //TODO Добавить путь к изображению скаченному с FTP
             };
 
             var card = new StackPanel
@@ -69,7 +82,7 @@ namespace Store
 
             card.Children.Add(cardImage);
             card.Children.Add(CreateCardAmount());
-            card.Children.Add(CreateCardAnnotation(productName));
+            card.Children.Add(CreateCardAnnotation(product.Annotation));
 
             return card;
         }
@@ -112,7 +125,6 @@ namespace Store
             var button = new Button
             {
                 Content = content,
-
             };
             button.Click += Button_CardAmount_OnClick;
             return button;
@@ -123,7 +135,8 @@ namespace Store
         private void Button_CardAmount_OnClick(object sender, RoutedEventArgs e)
         {
             var content = ((Button)sender).Content.ToString();
-            var product = ((Label)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[2]).Content.ToString();
+            var product = ((Label)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[2]).Content
+                .ToString();
 
             switch (content)
             {
@@ -140,6 +153,7 @@ namespace Store
             Button_Basket.Content = Order.Count > 0 ? $"Корзина ({Order.Count})" : "Корзина";
         }
 
+        #endregion
 
         private bool IsNewLine(string product)
         {
@@ -192,7 +206,10 @@ namespace Store
 
         private int AmountProduct(string product)
         {
-            return !IsNewLine(product) ? (from orderLine in Order where orderLine.ProductName == product select orderLine.ProductAmount).FirstOrDefault() : 0;
+            return !IsNewLine(product)
+                ? (from orderLine in Order where orderLine.ProductName == product select orderLine.ProductAmount)
+                .FirstOrDefault()
+                : 0;
         }
 
         //TODO Переместить в админку

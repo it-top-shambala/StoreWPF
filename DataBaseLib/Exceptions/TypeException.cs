@@ -2,6 +2,6 @@
 {
     public enum TypeException
     {
-        Unknown, NotAnswer, EmptyTable 
+        Unknown, NoAnswer, EmptyTable 
     }
 }
