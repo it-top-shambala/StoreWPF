@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Store"
         mc:Ignorable="d"
-        Title="Store" Height="800" Width="800">
+        Title="Store" Height="850" Width="1200"
+        ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary Source="Style.xaml" />
     </Window.Resources>
 
-    <DockPanel LastChildFill="True">
-        <StackPanel DockPanel.Dock="Top"  Orientation="Horizontal">
+    <StackPanel Background="Gray">
+        <StackPanel  Orientation="Horizontal">
             <Button Content="Магазин"/>
             <Button x:Name="Button_Basket" Content="Корзина" Click="Button_Basket_Click"/>
             <Button Content="Авторизоваться"/>
@@ -20,10 +21,597 @@
                     Click="Button_CreateDbConnectionTemplate_Click"/>
         </StackPanel>
 
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical">
+
+        <!--<Grid x:Name="Grid_Body"/>-->
+        <Grid ShowGridLines="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--Карточка товара-->
+            <StackPanel Grid.Row="0" Grid.Column="0" Height="365" Width="400">
+                <TextBlock
+                    Text="Ниаменование товара"
+                    Style="{StaticResource ResourceKey=TitleProductPole}"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    TextWrapping="Wrap"/>
+                <Grid
+                    Width="340" Height="265">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--Заменить прямоугольник на картинку-->
+                    <Rectangle 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="250" Height="250"
+                        Stroke="Black"/>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                        Content="art: 000000"
+                        Style="{StaticResource ResourceKey=ArtNumberPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"/>
+                    <StackPanel VerticalAlignment="Bottom">
+                        <DockPanel>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="доступно: 0"
+                                Style="{StaticResource ResourceKey=WarehausCountPole}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"/>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="Цена: 0.00 р."
+                                Style="{StaticResource ResourceKey=PricePole}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"/>
+
+                        </DockPanel>
+
+                        <Grid HorizontalAlignment="Center" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button
+                        Content="-"
+                        Grid.Column="0"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <TextBox
+                            Text="0"
+                            Grid.Column="1"
+                            Width="45"
+                            Style="{StaticResource ResourceKey=CountPole}"
+                            TextAlignment="Center"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                            <Button
+                        Content="+"
+                        Grid.Column="2"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <Button 
+                        Content="в карзину"
+                        Grid.Column="3"
+                        Margin="80,0,0,0"
+                        Style="{StaticResource ResourceKey=BayKey}"
+                        />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <TextBlock
+                        Text="Аннотация..."
+                        Style="{StaticResource ResourceKey=AnnotationPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10,0,10,10"
+                        TextWrapping="Wrap"
+                        />
+            </StackPanel>
+
+            <!--Временное заполнение -->
+            <StackPanel Grid.Row="0" Grid.Column="1" Height="365" Width="400">
+                <TextBlock
+                    Text="Ниаменование товара"
+                    Style="{StaticResource ResourceKey=TitleProductPole}"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    TextWrapping="Wrap"/>
+                <Grid
+                    Width="340" Height="265">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--Заменить прямоугольник на картинку-->
+                    <Rectangle 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="250" Height="250"
+                        Stroke="Black"/>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                        Content="art: 000000"
+                        Style="{StaticResource ResourceKey=ArtNumberPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"/>
+                    <StackPanel VerticalAlignment="Bottom">
+                        <DockPanel>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="доступно: 0"
+                                Style="{StaticResource ResourceKey=WarehausCountPole}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"/>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="Цена: 0.00 р."
+                                Style="{StaticResource ResourceKey=PricePole}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"/>
+
+                        </DockPanel>
+
+                        <Grid HorizontalAlignment="Center" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button
+                        Content="-"
+                        Grid.Column="0"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <TextBox
+                            Text="0"
+                            Grid.Column="1"
+                            Width="45"
+                            Style="{StaticResource ResourceKey=CountPole}"
+                            TextAlignment="Center"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                            <Button
+                        Content="+"
+                        Grid.Column="2"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <Button 
+                        Content="в карзину"
+                        Grid.Column="3"
+                        Margin="80,0,0,0"
+                        Style="{StaticResource ResourceKey=BayKey}"
+                        />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <TextBlock
+                        Text="Аннотация..."
+                        Style="{StaticResource ResourceKey=AnnotationPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10,0,10,10"
+                        TextWrapping="Wrap"
+                        />
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2" Height="365" Width="400">
+                <TextBlock
+                    Text="Ниаменование товара"
+                    Style="{StaticResource ResourceKey=TitleProductPole}"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    TextWrapping="Wrap"/>
+                <Grid
+                    Width="340" Height="265">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--Заменить прямоугольник на картинку-->
+                    <Rectangle 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="250" Height="250"
+                        Stroke="Black"/>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                        Content="art: 000000"
+                        Style="{StaticResource ResourceKey=ArtNumberPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"/>
+                    <StackPanel VerticalAlignment="Bottom">
+                        <DockPanel>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="доступно: 0"
+                                Style="{StaticResource ResourceKey=WarehausCountPole}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"/>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="Цена: 0.00 р."
+                                Style="{StaticResource ResourceKey=PricePole}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"/>
+
+                        </DockPanel>
+
+                        <Grid HorizontalAlignment="Center" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button
+                        Content="-"
+                        Grid.Column="0"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <TextBox
+                            Text="0"
+                            Grid.Column="1"
+                            Width="45"
+                            Style="{StaticResource ResourceKey=CountPole}"
+                            TextAlignment="Center"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                            <Button
+                        Content="+"
+                        Grid.Column="2"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <Button 
+                        Content="в карзину"
+                        Grid.Column="3"
+                        Margin="80,0,0,0"
+                        Style="{StaticResource ResourceKey=BayKey}"
+                        />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <TextBlock
+                        Text="Аннотация..."
+                        Style="{StaticResource ResourceKey=AnnotationPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10,0,10,10"
+                        TextWrapping="Wrap"
+                        />
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Height="365" Width="400">
+                <TextBlock
+                    Text="Ниаменование товара"
+                    Style="{StaticResource ResourceKey=TitleProductPole}"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    TextWrapping="Wrap"/>
+                <Grid
+                    Width="340" Height="265">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--Заменить прямоугольник на картинку-->
+                    <Rectangle 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="250" Height="250"
+                        Stroke="Black"/>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                        Content="art: 000000"
+                        Style="{StaticResource ResourceKey=ArtNumberPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"/>
+                    <StackPanel VerticalAlignment="Bottom">
+                        <DockPanel>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="доступно: 0"
+                                Style="{StaticResource ResourceKey=WarehausCountPole}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"/>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="Цена: 0.00 р."
+                                Style="{StaticResource ResourceKey=PricePole}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"/>
+
+                        </DockPanel>
+
+                        <Grid HorizontalAlignment="Center" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button
+                        Content="-"
+                        Grid.Column="0"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <TextBox
+                            Text="0"
+                            Grid.Column="1"
+                            Width="45"
+                            Style="{StaticResource ResourceKey=CountPole}"
+                            TextAlignment="Center"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                            <Button
+                        Content="+"
+                        Grid.Column="2"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <Button 
+                        Content="в карзину"
+                        Grid.Column="3"
+                        Margin="80,0,0,0"
+                        Style="{StaticResource ResourceKey=BayKey}"
+                        />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <TextBlock
+                        Text="Аннотация..."
+                        Style="{StaticResource ResourceKey=AnnotationPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10,0,10,10"
+                        TextWrapping="Wrap"
+                        />
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Height="365" Width="400">
+                <TextBlock
+                    Text="Ниаменование товара"
+                    Style="{StaticResource ResourceKey=TitleProductPole}"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    TextWrapping="Wrap"/>
+                <Grid
+                    Width="340" Height="265">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--Заменить прямоугольник на картинку-->
+                    <Rectangle 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="250" Height="250"
+                        Stroke="Black"/>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                        Content="art: 000000"
+                        Style="{StaticResource ResourceKey=ArtNumberPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"/>
+                    <StackPanel VerticalAlignment="Bottom">
+                        <DockPanel>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="доступно: 0"
+                                Style="{StaticResource ResourceKey=WarehausCountPole}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"/>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="Цена: 0.00 р."
+                                Style="{StaticResource ResourceKey=PricePole}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"/>
+
+                        </DockPanel>
+
+                        <Grid HorizontalAlignment="Center" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button
+                        Content="-"
+                        Grid.Column="0"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <TextBox
+                            Text="0"
+                            Grid.Column="1"
+                            Width="45"
+                            Style="{StaticResource ResourceKey=CountPole}"
+                            TextAlignment="Center"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                            <Button
+                        Content="+"
+                        Grid.Column="2"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <Button 
+                        Content="в карзину"
+                        Grid.Column="3"
+                        Margin="80,0,0,0"
+                        Style="{StaticResource ResourceKey=BayKey}"
+                        />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <TextBlock
+                        Text="Аннотация..."
+                        Style="{StaticResource ResourceKey=AnnotationPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10,0,10,10"
+                        TextWrapping="Wrap"
+                        />
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="2" Height="365" Width="400">
+                <TextBlock
+                    Text="Ниаменование товара"
+                    Style="{StaticResource ResourceKey=TitleProductPole}"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    TextWrapping="Wrap"/>
+                <Grid
+                    Width="340" Height="265">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--Заменить прямоугольник на картинку-->
+                    <Rectangle 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Width="250" Height="250"
+                        Stroke="Black"/>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                        Content="art: 000000"
+                        Style="{StaticResource ResourceKey=ArtNumberPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"/>
+                    <StackPanel VerticalAlignment="Bottom">
+                        <DockPanel>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="доступно: 0"
+                                Style="{StaticResource ResourceKey=WarehausCountPole}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"/>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Content="Цена: 0.00 р."
+                                Style="{StaticResource ResourceKey=PricePole}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"/>
+
+                        </DockPanel>
+
+                        <Grid HorizontalAlignment="Center" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="35"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button
+                        Content="-"
+                        Grid.Column="0"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <TextBox
+                            Text="0"
+                            Grid.Column="1"
+                            Width="45"
+                            Style="{StaticResource ResourceKey=CountPole}"
+                            TextAlignment="Center"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                            <Button
+                        Content="+"
+                        Grid.Column="2"
+                        Width="30"
+                        Style="{StaticResource ResourceKey=CountKey}"/>
+                            <Button 
+                        Content="в карзину"
+                        Grid.Column="3"
+                        Margin="80,0,0,0"
+                        Style="{StaticResource ResourceKey=BayKey}"
+                        />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <TextBlock
+                        Text="Аннотация..."
+                        Style="{StaticResource ResourceKey=AnnotationPole}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10,0,10,10"
+                        TextWrapping="Wrap"
+                        />
+            </StackPanel>
+
+            <!-- -->
+        </Grid>
+
+        <StackPanel Orientation="Vertical">
             <Label x:Name="Label_StatusBar" Content="Status: " />
         </StackPanel>
-        
-        <Grid x:Name="Grid_Body"/>
-    </DockPanel>
+
+    </StackPanel>
 </Window>
