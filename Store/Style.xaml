@@ -21,11 +21,58 @@
         <Setter Property="MaxHeight" Value="170"/>
         <Setter Property="MaxWidth" Value="170"/>
     </Style>
-    
-    <Style TargetType="Grid">
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+        
+    <!-- Стиль карточки  -->
+    <Style x:Key="TitleProductPole">
+        <Setter Property="ItemsControl.FontSize" Value="18"/>
+        <Setter Property="ItemsControl.Foreground" Value="DarkBlue"/>
+        <Setter Property="ItemsControl.FontWeight" Value="DemiBold"/>
+    </Style>
+
+    <Style x:Key="ArtNumberPole">
+        <Setter Property="ItemsControl.FontSize" Value="14"/>
+        <Setter Property="ItemsControl.FontStyle" Value="Italic"/>
+        <Setter Property="ItemsControl.Foreground" Value="DarkSlateGray"/>
+        <Setter Property="ItemsControl.FontWeight" Value="DemiBold"/>
+    </Style>
+
+    <Style x:Key="PricePole">
+        <Setter Property="ItemsControl.FontSize" Value="18"/>
+        <Setter Property="ItemsControl.FontStyle" Value="Italic"/>
+        <Setter Property="ItemsControl.Foreground" Value="Red"/>
+        <Setter Property="ItemsControl.Background" Value="DarkOrange"/>
+        <Setter Property="ItemsControl.FontWeight" Value="DemiBold"/>
     </Style>
     
-    <!--  -->
+    <Style x:Key="WarehausCountPole">
+        <Setter Property="ItemsControl.FontSize" Value="12"/>
+        <Setter Property="ItemsControl.FontStyle" Value="Italic"/>
+        <Setter Property="ItemsControl.Foreground" Value="BlanchedAlmond"/>
+        <Setter Property="ItemsControl.Background" Value="Brown"/>
+        <Setter Property="ItemsControl.FontWeight" Value="DemiBold"/>
+    </Style>
+
+    <Style x:Key="BayKey">
+        <Setter Property="ItemsControl.FontSize" Value="18"/>
+        <Setter Property="ItemsControl.Foreground" Value="Green"/>
+        <Setter Property="ItemsControl.FontWeight" Value="DemiBold"/>
+    </Style>
+
+    <Style x:Key="CountKey">
+        <Setter Property="ItemsControl.FontSize" Value="18"/>
+        <Setter Property="ItemsControl.Foreground" Value="LightCoral"/>
+        <Setter Property="ItemsControl.FontWeight" Value="ExtraBold"/>
+    </Style>
+    <Style x:Key="CountPole">
+        <Setter Property="ItemsControl.FontSize" Value="18"/>
+        <Setter Property="ItemsControl.Foreground" Value="LightCoral"/>
+        <Setter Property="ItemsControl.FontWeight" Value="Medium"/>
+    </Style>
+
+    <Style x:Key="AnnotationPole">
+        <Setter Property="ItemsControl.FontSize" Value="15"/>
+        <Setter Property="ItemsControl.Foreground" Value="Aquamarine"/>
+        <Setter Property="ItemsControl.FontWeight" Value="Light"/>
+    </Style>
+
 </ResourceDictionary>

@@ -24,45 +24,41 @@ namespace Store
         public MainWindow()
         {
             InitializeComponent();
-            InitGrid(2, 4);
 
-            Order = new ObservableCollection<OrderLine>();
-            Products = new ObservableCollection<Product>(new DataBaseLib.DataBase().GetAllProducts());
+            //Order = new ObservableCollection<OrderLine>();
+            //Products = new ObservableCollection<Product>(new DataBaseLib.DataBase().GetAllProducts());
         }
-        #endregion
-
-
         #endregion
 
         #region CreateGrid
 
-        private void InitGrid(int amountRows, int amountColumns)
-        {
-            Grid_Body.RowDefinitions.Clear();
-            Grid_Body.ColumnDefinitions.Clear();
+        //private void InitGrid(int amountRows, int amountColumns)
+        //{
+        //    Grid_Body.RowDefinitions.Clear();
+        //    Grid_Body.ColumnDefinitions.Clear();
 
-            for (int i = 0; i < amountRows; i++)
-            {
-                Grid_Body.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            }
+        //    for (int i = 0; i < amountRows; i++)
+        //    {
+        //        Grid_Body.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        //    }
 
-            for (int j = 0; j < amountColumns; j++)
-            {
-                Grid_Body.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            }
+        //    for (int j = 0; j < amountColumns; j++)
+        //    {
+        //        Grid_Body.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        //    }
 
-            for (int i = 0; i < amountRows; i++)
-            {
-                for (int j = 0; j < amountColumns; j++)
-                {
-                    var card = CreateCard(new Product());
-                    Grid.SetRow(card, i);
-                    Grid.SetColumn(card, j);
+        //    for (int i = 0; i < amountRows; i++)
+        //    {
+        //        for (int j = 0; j < amountColumns; j++)
+        //        {
+        //            var card = CreateCard(new Product());
+        //            Grid.SetRow(card, i);
+        //            Grid.SetColumn(card, j);
 
-                    Grid_Body.Children.Add(card);
-                }
-            }
-        }
+        //            Grid_Body.Children.Add(card);
+        //        }
+        //    }
+        //}
 
         #endregion
 
@@ -153,7 +149,6 @@ namespace Store
             Button_Basket.Content = Order.Count > 0 ? $"Корзина ({Order.Count})" : "Корзина";
         }
 
-        #endregion
 
         private bool IsNewLine(string product)
         {
