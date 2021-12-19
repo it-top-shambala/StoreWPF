@@ -1,0 +1,88 @@
+﻿<Window x:Class="Store.ProductCardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Store"
+        mc:Ignorable="d"
+        Title="ProductCardWindow" Height="370" Width="400"
+        WindowStyle="None">
+    <Window.Resources>
+        <ResourceDictionary Source="Style.xaml" />
+    </Window.Resources>
+    <StackPanel>
+        <TextBlock
+            x:Name="TextBlock_ProductName"
+            Text="Ниаменование товара"
+            Style="{StaticResource ResourceKey=Style_ProductName}"/>
+        <Grid
+            Height="280"
+            Margin="5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image
+                x:Name="Image_ProductImage"
+                Grid.Row="0" Grid.Column="0"
+                Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\Stroe_WPF_shambola\Store\img\product.jpg"
+                Style="{StaticResource ResourceKey=Style_ProductImage}"/>
+            <Label
+                x:Name="Label_ProductArtNumber"
+                Grid.Row="0" Grid.Column="0"
+                Content="art: 000000"
+                Style="{StaticResource ResourceKey=Style_ProductArtNumber}"/>
+            <StackPanel VerticalAlignment="Bottom">
+                <DockPanel>
+                    <Label
+                        x:Name="Label_ProductAvailable"
+                        Grid.Row="0" Grid.Column="0"
+                        Content="доступно: 0"
+                        Style="{StaticResource ResourceKey=Stule_ProductAvailable}"/>
+                    <Label
+                        x:Name="Label_ProductPrice"
+                        Grid.Row="0" Grid.Column="0"
+                        Content="Цена: 0.00 р."
+                        Style="{StaticResource ResourceKey=Style_ProductPrice}"/>
+                </DockPanel>
+                <Grid HorizontalAlignment="Center" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="250"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button
+                        x:Name="Button_ProductCountKey_Reduce"
+                        Content="-"
+                        Grid.Column="0"
+                        Style="{StaticResource ResourceKey=Style_ProductCountKey}"/>
+                    <TextBox
+                        x:Name="TextBox_ProductCounter"
+                        Text="0"
+                        Grid.Column="1"
+                        Style="{StaticResource ResourceKey=Style_ProductCounter}"/>
+                    <Button
+                        x:Name="ButtonCountKey_Increase"
+                        Content="+"
+                        Grid.Column="2"                        
+                        Style="{StaticResource ResourceKey=Style_ProductCountKey}"/>
+                    <Button
+                        x:Name="ButtonProductAddToCartKey"
+                        Content="в карзину"
+                        Grid.Column="3"
+                        Style="{StaticResource ResourceKey=Style_ProductAddToCartKey}"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <TextBlock
+            x:Name="TextBlock_ProductAnnotation"
+            Text="Аннотация..."
+            Style="{StaticResource ResourceKey=Style_ProductAnnotation}"/>
+    </StackPanel>
+</Window>
