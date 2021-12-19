@@ -27,6 +27,7 @@
             <Image
                 x:Name="Image_ProductImage"
                 Grid.Row="0" Grid.Column="0"
+                Source="D:\YandexDisk\Академия ШАГ\WPF_Windows Forms\WPF_App\Stroe_WPF_shambola\Store\img\product.jpg"
                 Style="{StaticResource ResourceKey=Style_ProductImage}"/>
             <Label
                 x:Name="Label_ProductArtNumber"
