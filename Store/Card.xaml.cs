@@ -48,5 +48,31 @@ namespace Store
             this.ProductCounter = "0";
             this.DataContext = this;
         }
+
+        private void Button_ProductCountKey_Reduce_Click(object sender, RoutedEventArgs e)
+        {
+            if (Convert.ToInt32(TextBox_ProductCounter.Text) > 0)
+            {
+                TextBox_ProductCounter.Text = (Convert.ToInt32(TextBox_ProductCounter.Text) - 1).ToString();
+            }
+        }
+
+        private void Button_ProductCountKey_Increase_Click(object sender, RoutedEventArgs e)
+        {
+            TextBox_ProductCounter.Text = (Convert.ToInt32(TextBox_ProductCounter.Text) + 1).ToString();
+        }
+
+        private void TextBox_ProductCounter_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Button_ProductCountKey_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            TextBox_ProductCounter.Text = "0";
+        }
     }
 }

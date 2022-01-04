@@ -9,15 +9,19 @@
     <UserControl.Resources>
         <ResourceDictionary Source="Style.xaml"/>
     </UserControl.Resources>
-    <Border CornerRadius="5" BorderBrush="White" BorderThickness="2" Height="368" Width="398">
+    <Border
+        CornerRadius="5"
+        BorderBrush="White"
+        BorderThickness="2"
+        Height="368" Width="398">
         <StackPanel>
             <TextBlock
-            x:Name="TextBlock_ProductName"
-            Text="{Binding ProductName}"
-            Style="{StaticResource ResourceKey=Style_ProductName}"/>
+                x:Name="TextBlock_ProductName"
+                Text="{Binding ProductName}"
+                Style="{StaticResource ResourceKey=Style_ProductName}"/>
             <Grid
-            Height="280"
-            Margin="5,0">
+                Height="280"
+                Margin="5,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -25,92 +29,106 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Image
-                x:Name="Image_ProductImage"
-                Grid.Row="0" Grid.Column="0"
-                Source="{Binding ProductImage}"
-                Style="{StaticResource ResourceKey=Style_ProductImage}"/>
-                <StackPanel Orientation="Horizontal"
-                Grid.Row="0" Grid.Column="0">
+                    x:Name="Image_ProductImage"
+                    Grid.Row="0" Grid.Column="0"
+                    Source="{Binding ProductImage}"
+                    Style="{StaticResource ResourceKey=Style_ProductImage}"/>
+                <StackPanel
+                    Orientation="Horizontal"
+                    Grid.Row="0" Grid.Column="0">
                     <Label
-                x:Name="Label_ProductArtNumber_Title"
-                Content="art: "
-                Style="{StaticResource ResourceKey=Style_ProductArtNumber}"/>
+                        x:Name="Label_ProductArtNumber_Title"
+                        Content="art: "
+                        Style="{StaticResource ResourceKey=Style_ProductArtNumber}"/>
                     <Label
-                x:Name="Label_ProductArtNumber"
-                Content="{Binding ProductArtNumber}"
-                Style="{StaticResource ResourceKey=Style_ProductArtNumber}"/>
+                        x:Name="Label_ProductArtNumber"
+                        Content="{Binding ProductArtNumber}"
+                        Style="{StaticResource ResourceKey=Style_ProductArtNumber}"/>
                 </StackPanel>
-                <StackPanel VerticalAlignment="Bottom">
+                <StackPanel
+                    VerticalAlignment="Bottom">
                     <DockPanel>
-                        <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Bottom"
-                        Grid.Row="0" Grid.Column="0">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Grid.Row="0" Grid.Column="0">
                             <Label
-                        x:Name="Label_ProductAvailable_Title"
-                        Content="доступно: "
-                        Style="{StaticResource ResourceKey=Stule_ProductAvailable}"/>
+                                x:Name="Label_ProductAvailable_Title"
+                                Content="доступно: "
+                                Style="{StaticResource ResourceKey=Stule_ProductAvailable}"/>
                             <Label
-                        x:Name="Label_ProductAvailable"
-                        Content="{Binding ProductAvailable}"
-                        Style="{StaticResource ResourceKey=Stule_ProductAvailable}"/>
+                                x:Name="Label_ProductAvailable"
+                                Content="{Binding ProductAvailable}"
+                                Style="{StaticResource ResourceKey=Stule_ProductAvailable}"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                        Grid.Row="0" Grid.Column="0">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Grid.Row="0" Grid.Column="0">
                             <Label
-                        x:Name="Label_ProductPrice_Title"
-                        Content="Цена: "
-                        Style="{StaticResource ResourceKey=Style_ProductPrice}"/>
+                                x:Name="Label_ProductPrice_Title"
+                                Content="Цена: "
+                                Style="{StaticResource ResourceKey=Style_ProductPrice}"/>
                             <Label
-                        x:Name="Label_ProductPrice"
-                        Content="{Binding ProductPrice}"
-                        Style="{StaticResource ResourceKey=Style_ProductPrice}"/>
+                                x:Name="Label_ProductPrice"
+                                Content="{Binding ProductPrice}"
+                                Style="{StaticResource ResourceKey=Style_ProductPrice}"/>
                             <Label
-                        x:Name="Label_ProductPrice_Currency"
-                        Content=" р."
-                        Style="{StaticResource ResourceKey=Style_ProductPrice}"/>
-
+                                x:Name="Label_ProductPrice_Currency"
+                                Content=" р."
+                                Style="{StaticResource ResourceKey=Style_ProductPrice}"/>
                         </StackPanel>
                     </DockPanel>
-                    <Grid HorizontalAlignment="Center" Margin="10">
+                    <Grid
+                        HorizontalAlignment="Center" Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="35"/>
                             <ColumnDefinition Width="45"/>
                             <ColumnDefinition Width="35"/>
-                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="215"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Button
-                        x:Name="Button_ProductCountKey_Reduce"
-                        Content="-"
-                        Grid.Column="0"
-                        Style="{StaticResource ResourceKey=Style_ProductCountKey}"/>
+                            x:Name="Button_ProductCountKey_Reduce"
+                            Click="Button_ProductCountKey_Reduce_Click"
+                            Content="-"
+                            Grid.Column="0"
+                            Style="{StaticResource ResourceKey=Style_ProductCountKey}"/>
                         <TextBox
-                        x:Name="TextBox_ProductCounter"
-                        Text="{Binding ProductCounter}"
-                        Grid.Column="1"
-                        Style="{StaticResource ResourceKey=Style_ProductCounter}"/>
+                            x:Name="TextBox_ProductCounter"
+                            Text="{Binding ProductCounter}"
+                            PreviewTextInput="TextBox_ProductCounter_PreviewTextInput"
+                            Grid.Column="1"
+                            Style="{StaticResource ResourceKey=Style_ProductCounter}"/>
                         <Button
-                        x:Name="Button_ProductCountKey_Increase"
-                        Content="+"
-                        Grid.Column="2"                        
-                        Style="{StaticResource ResourceKey=Style_ProductCountKey}"/>
+                            x:Name="Button_ProductCountKey_Increase"
+                            Click="Button_ProductCountKey_Increase_Click"
+                            Content="+"
+                            Grid.Column="2"                        
+                            Style="{StaticResource ResourceKey=Style_ProductCountKey}"/>
                         <Button
-                        x:Name="Button_ProductAddToCartKey"
-                        Content="в карзину"
-                        Grid.Column="3"
-                        Style="{StaticResource ResourceKey=Style_ProductAddToCartKey}"/>
+                            x:Name="Button_ProductCountKey_Cancel"
+                            Click="Button_ProductCountKey_Cancel_Click"
+                            Content="0"
+                            Grid.Column="3"                        
+                            Style="{StaticResource ResourceKey=Style_ProductCountKey}"/>
+                        <Button
+                            x:Name="Button_ProductAddToCartKey"
+                            Content="в корзину"
+                            Grid.Column="4"
+                            Style="{StaticResource ResourceKey=Style_ProductAddToCartKey}"/>
                     </Grid>
                 </StackPanel>
             </Grid>
             <TextBlock
-            x:Name="TextBlock_ProductAnnotation"
-            Text="{Binding ProductAnnotation}"
-            Style="{StaticResource ResourceKey=Style_ProductAnnotation}"/>
+                x:Name="TextBlock_ProductAnnotation"
+                Text="{Binding ProductAnnotation}"
+                Style="{StaticResource ResourceKey=Style_ProductAnnotation}"/>
         </StackPanel>
     </Border>
 </UserControl>

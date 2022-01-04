@@ -61,7 +61,8 @@
     </Style>
 
     <Style x:Key="Style_ProductAddToCartKey" TargetType="Button">
-        <Setter Property="Margin" Value="80,0,0,0"/>
+        <Setter Property="Padding" Value="20,0"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Foreground" Value="Green"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
