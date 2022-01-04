@@ -106,8 +106,8 @@ namespace DbConnectionLib
             outputData = _command.ExecuteReader();
             Info?.Invoke("Выполнение запроса SQL на стороне БД");
 
-            _db.Close();
-            Info?.Invoke("Закрытие БД");
+            //_db.Close();
+            //Info?.Invoke("Закрытие БД");
 
             return outputData.HasRows;
         }
@@ -140,6 +140,10 @@ namespace DbConnectionLib
             return countRows > 0;
         }
 
+        public void Close() 
+        {
+            _db.Close();
+        }
         #endregion
     }
 }

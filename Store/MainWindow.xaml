@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Store"
         mc:Ignorable="d"
-        Title="Store" Height="850" Width="1200"
-        ResizeMode="NoResize">
+        Title="Store" Height="850" Width="1200">
+    <!--ResizeMode="NoResize"-->
+
     <Window.Resources>
         <ResourceDictionary Source="Style.xaml" />
     </Window.Resources>
@@ -14,6 +15,7 @@
     <StackPanel Background="Gray">
         <StackPanel  Orientation="Horizontal">
             <Button Content="Магазин"/>
+            <Button Content="Склад"/>
             <Button x:Name="Button_Basket" Content="Корзина" Click="Button_Basket_Click"/>
             <Button Content="Авторизоваться"/>
             <Button x:Name="Button_CreateDbConnectionTemplate"
@@ -21,21 +23,13 @@
                     Click="Button_CreateDbConnectionTemplate_Click"/>
         </StackPanel>
 
-        <!--<Grid x:Name="Grid_Body"/>-->
-        <Grid ShowGridLines="False">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="400"/>
-                <ColumnDefinition Width="400"/>
-                <ColumnDefinition Width="400"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="370"/>
-                <RowDefinition Height="370"/>
-            </Grid.RowDefinitions>
-
-            <!--Карточка товара-->
-            
-        </Grid>
+        <!--  Витрина (Showcase)  -->
+        <WrapPanel x:Name="WrapPanel_Showcase"
+                   Orientation="Horizontal"
+                   Width="1200" Height="740">
+            <!--  Карты продуктов  -->
+        </WrapPanel>
+        <!--  Витрина (Showcase)  -->
 
         <StackPanel Orientation="Vertical">
             <Label x:Name="Label_StatusBar" Content="Status: " VerticalAlignment="Bottom"/>

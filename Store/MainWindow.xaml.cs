@@ -14,8 +14,8 @@ namespace Store
     {
         #region Values
 
-        public static ObservableCollection<OrderLine> Order;
-        public static ObservableCollection<Product> Products;
+        public static ObservableCollection<OrderLine>? Order;
+        public static ObservableCollection<Product>? Products;
 
         #endregion
 
@@ -25,12 +25,36 @@ namespace Store
         {
             InitializeComponent();
 
-            //Order = new ObservableCollection<OrderLine>();
-            //Products = new ObservableCollection<Product>(new DataBaseLib.DataBase().GetAllProducts());
+            Order = new ObservableCollection<OrderLine>();
+            Products = new ObservableCollection<Product>(new DataBaseLib.DataBase().GetAllProducts());
+            CreateListCards();
         }
         #endregion
 
-        #region CreateGrid
+
+        #region CreateCard
+        private void CreateListCards()
+        {
+            if (Products.Count > 6)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    WrapPanel_Showcase.Children.Add(new Card(Products[i]));
+                }
+            }
+            else
+            {
+                foreach (var item in Products)
+                {
+                    WrapPanel_Showcase.Children.Add(new Card(item));
+                }
+            }
+        }
+
+        #endregion
+
+        #region Temp
+
 
         //private void InitGrid(int amountRows, int amountColumns)
         //{
@@ -60,28 +84,24 @@ namespace Store
         //    }
         //}
 
-        #endregion
+        //private StackPanel CreateCard(Product product)
+        //{
+        //    var cardImage = new Image
+        //    {
+        //        Source = new BitmapImage(new Uri(Environment.CurrentDirectory + @"\img\product.jpg")) //TODO Добавить путь к изображению скаченному с FTP
+        //    };
 
-        #region CreateCard
+        //    var card = new StackPanel
+        //    {
+        //        Orientation = Orientation.Vertical
+        //    };
 
-        private StackPanel CreateCard(Product product)
-        {
-            var cardImage = new Image
-            {
-                Source = new BitmapImage(new Uri(Environment.CurrentDirectory + @"\img\product.jpg")) //TODO Добавить путь к изображению скаченному с FTP
-            };
+        //    card.Children.Add(cardImage);
+        //    card.Children.Add(CreateCardAmount());
+        //    card.Children.Add(CreateCardAnnotation(product.Annotation));
 
-            var card = new StackPanel
-            {
-                Orientation = Orientation.Vertical
-            };
-
-            card.Children.Add(cardImage);
-            card.Children.Add(CreateCardAmount());
-            card.Children.Add(CreateCardAnnotation(product.Annotation));
-
-            return card;
-        }
+        //    return card;
+        //}
 
         private Label CreateCardAnnotation(string annotation)
         {
@@ -125,9 +145,6 @@ namespace Store
             button.Click += Button_CardAmount_OnClick;
             return button;
         }
-        #endregion
-
-
         private void Button_CardAmount_OnClick(object sender, RoutedEventArgs e)
         {
             var content = ((Button)sender).Content.ToString();
@@ -144,7 +161,7 @@ namespace Store
                     break;
             }
 
-            ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = AmountProduct(product);
+    ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = AmountProduct(product);
 
             Button_Basket.Content = Order.Count > 0 ? $"Корзина ({Order.Count})" : "Корзина";
         }
@@ -227,5 +244,8 @@ namespace Store
                     $"Шаблонный файл: {fileConnection}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        #endregion
+
     }
 }

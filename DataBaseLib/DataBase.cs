@@ -39,7 +39,7 @@ namespace DataBaseLib
                     Image = outputData.GetString("image")
                 });
             }
-
+            _db.Close();
             return products;
         }
     }

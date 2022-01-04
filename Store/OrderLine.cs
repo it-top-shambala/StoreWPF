@@ -8,7 +8,7 @@ namespace Store
 {
     public class OrderLine
     {
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
         public int ProductAmount { get; set; }
     }
 }

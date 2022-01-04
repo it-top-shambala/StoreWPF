@@ -13,6 +13,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Update="db_connection.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="img\product.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
