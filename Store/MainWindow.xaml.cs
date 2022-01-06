@@ -39,14 +39,14 @@ namespace Store
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    WrapPanel_Showcase.Children.Add(new Card(Products[i]));
+                    WrapPanel_Showcase.Children.Add(new Template_view.Product_Card.Card(Products[i]));
                 }
             }
             else
             {
                 foreach (var item in Products)
                 {
-                    WrapPanel_Showcase.Children.Add(new Card(item));
+                    WrapPanel_Showcase.Children.Add(new Template_view.Product_Card.Card(item));
                 }
             }
         }

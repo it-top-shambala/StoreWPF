@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="Store.Template_view.Basket.BasketTitle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Store.Template_view.Basket"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="1300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\..\Style.xaml"/>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True" Background="Gray">
+        <Grid DockPanel.Dock="Bottom" Height="45">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <Border
+                Grid.Column="0"
+                Style="{StaticResource ResourceKey=Style_Border}">
+                <Label
+                    Content="#"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            </Border>
+            <Border
+                Grid.Column="1"
+                Style="{StaticResource ResourceKey=Style_Border}">
+                <Label
+                    Content="Наименование"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+            </Border>
+            <Border
+                Grid.Column="2"
+                Style="{StaticResource ResourceKey=Style_Border}">
+                <Label
+                    Content="Доступно"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            </Border>
+            <Border
+                Grid.Column="3"
+                Style="{StaticResource ResourceKey=Style_Border}">
+                <Label
+                    Content="Количесво"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            </Border>
+            <Border
+                Grid.Column="4"
+                Style="{StaticResource ResourceKey=Style_Border}">
+                <Label
+                    Content="Цена"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            </Border>
+            <Border
+                Grid.Column="5"
+                Style="{StaticResource ResourceKey=Style_Border}">
+                <Label
+                    Content="Итого"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            </Border>
+            <Border
+                Grid.Column="6"
+                Style="{StaticResource ResourceKey=Style_Border}">
+            </Border>
+        </Grid>
+        <StackPanel
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            <Label
+                Content="КАРЗИНА № "/>
+            <Label
+                Content="0000"/>
+            <Label
+                Content=" от "/>
+            <Label
+                Content="01.01.2022"/>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

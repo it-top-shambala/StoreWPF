@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Store
+namespace Store.Template_view.Product_Card
 {
     /// <summary>
     /// Interaction logic for Card.xaml

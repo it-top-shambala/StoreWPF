@@ -19,9 +19,9 @@
         <Setter Property="MaxWidth" Value="170"/>
     </Style>
         
-    <!-- Стиль карточки  -->
+    <!-- Стили карточки  -->
     <Style x:Key="Style_ProductName" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="Foreground" Value="DarkBlue"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="TextAlignment" Value="Center"/>
@@ -32,7 +32,7 @@
     <Style x:Key="Style_ProductArtNumber" TargetType="Label">
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="10"/>
         <Setter Property="FontStyle" Value="Italic"/>
         <Setter Property="Foreground" Value="DarkSlateGray"/>
         <Setter Property="Background" Value="Coral"/>
@@ -43,7 +43,7 @@
     <Style x:Key="Style_ProductPrice" TargetType="Label">
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontStyle" Value="Italic"/>
         <Setter Property="Foreground" Value="Red"/>
         <Setter Property="Background" Value="DarkOrange"/>
@@ -53,7 +53,7 @@
     <Style x:Key="Stule_ProductAvailable" TargetType="Label">
         <Setter Property="VerticalAlignment" Value="Bottom"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontSize" Value="10"/>
         <Setter Property="FontStyle" Value="Italic"/>
         <Setter Property="Foreground" Value="BlanchedAlmond"/>
         <Setter Property="Background" Value="Brown"/>
@@ -63,14 +63,14 @@
     <Style x:Key="Style_ProductAddToCartKey" TargetType="Button">
         <Setter Property="Padding" Value="20,0"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="Foreground" Value="Green"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
     </Style>
 
     <Style x:Key="Style_ProductCountKey" TargetType="Button">
         <Setter Property="Width" Value="30"/>
-        <Setter Property="ItemsControl.FontSize" Value="18"/>
+        <Setter Property="ItemsControl.FontSize" Value="16"/>
         <Setter Property="ItemsControl.Foreground" Value="LightCoral"/>
         <Setter Property="ItemsControl.FontWeight" Value="ExtraBold"/>
     </Style>
@@ -80,7 +80,7 @@
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="ItemsControl.FontSize" Value="18"/>
+        <Setter Property="ItemsControl.FontSize" Value="16"/>
         <Setter Property="ItemsControl.Foreground" Value="LightCoral"/>
         <Setter Property="ItemsControl.FontWeight" Value="Medium"/>
     </Style>
@@ -89,7 +89,7 @@
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="Margin" Value="10,0,10,10"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="ItemsControl.FontSize" Value="15"/>
+        <Setter Property="ItemsControl.FontSize" Value="13"/>
         <Setter Property="ItemsControl.Foreground" Value="Aquamarine"/>
         <Setter Property="ItemsControl.FontWeight" Value="Light"/>
     </Style>
@@ -99,5 +99,10 @@
         <Setter Property="Width" Value="250"/>
         <Setter Property="Height" Value="250"/>
     </Style>
-
+    
+    <!-- Стили корзины  -->
+    <Style x:Key="Style_Border" TargetType="Border">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
 </ResourceDictionary>

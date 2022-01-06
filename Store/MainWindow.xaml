@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Store"
         mc:Ignorable="d"
-        Title="Store" Height="850" Width="1200">
+        Title="Store" Height="725" Width="1366">
     <!--ResizeMode="NoResize"-->
 
     <Window.Resources>
@@ -26,7 +26,7 @@
         <!--  Витрина (Showcase)  -->
         <WrapPanel x:Name="WrapPanel_Showcase"
                    Orientation="Horizontal"
-                   Width="1200" Height="740">
+                   Width="1366" Height="630">
             <!--  Карты продуктов  -->
         </WrapPanel>
         <!--  Витрина (Showcase)  -->
