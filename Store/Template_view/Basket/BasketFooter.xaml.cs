@@ -10,21 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Store
+namespace Store.Template_view.Basket
 {
     /// <summary>
-    /// Interaction logic for WindowBasket.xaml
+    /// Interaction logic for BasketFooter.xaml
     /// </summary>
-    public partial class WindowBasket : Window
+    public partial class BasketFooter : UserControl
     {
-        public WindowBasket()
+        public BasketFooter()
         {
             InitializeComponent();
-
-            //DataGrid_Orders.ItemsSource = MainWindow.Order;
+            this.DataContext = this;
         }
 
+        //TODO Обработчик кнопок
     }
 }

@@ -14,25 +14,29 @@ namespace Store
     {
         #region Values
 
-        public static ObservableCollection<OrderLine>? Order;
+        public static ObsColOrder Order;
         public static ObservableCollection<Product>? Products;
 
         #endregion
 
         #region Constructors
-
         public MainWindow()
         {
             InitializeComponent();
-
-            Order = new ObservableCollection<OrderLine>();
-            Products = new ObservableCollection<Product>(new DataBaseLib.DataBase().GetAllProducts());
-            CreateListCards();
+            InitValue();
         }
         #endregion
 
+        #region Init
+        private void InitValue()
+        {
+            Order = new ObsColOrder();
+            Products = new ObservableCollection<Product>(new DataBaseLib.DataBase().GetAllProducts());
+        }
+        #endregion
 
-        #region CreateCard
+        #region Shop
+
         private void CreateListCards()
         {
             if (Products.Count > 6)
@@ -51,10 +55,45 @@ namespace Store
             }
         }
 
+        //TODO Изменить вызов витрины продуктов - привязать к кнопке МАГАЗИН
+        //TODO Вызов карзины (загрузить Заголовок+Сроки заказа+Подвал заказа.
+        //TODO Добавить админку (ввод реквизитов подключения - ручной, из файла, сохранить в файл)
+
+        #endregion
+
+        #region Basket
+        private void CreateListOrder()
+        {
+            //  Корзина
+            //  Заголовок корзины
+            WrapPanel_Showcase.Children.Add(new Template_view.Basket.BasketTitle());
+            //  Строки корзины
+
+            //  Подвал корзины
+            //WrapPanel_Showcase.Children.Add(new Template_view.Basket.BasketFooter());
+        }
+        #endregion
+
+        #region Button
+        private void Button_ShowStore_Click(object sender, RoutedEventArgs e)
+        {
+            WrapPanel_Showcase.Children.Clear();
+            //WrapPanel_Showcase.Orientation = Orientation.Horizontal;
+            CreateListCards();
+        }
+        private void Button_ShowBasket_Click(object sender, RoutedEventArgs e)
+        {
+            //if (Order.GetOrderCount() > 0)
+            {
+                WrapPanel_Showcase.Children.Clear();
+                //WrapPanel_Showcase.Orientation = Orientation.Vertical;
+
+                CreateListOrder();
+            }
+        }
         #endregion
 
         #region Temp
-
 
         //private void InitGrid(int amountRows, int amountColumns)
         //{
@@ -103,126 +142,126 @@ namespace Store
         //    return card;
         //}
 
-        private Label CreateCardAnnotation(string annotation)
-        {
-            var label = new Label
-            {
-                Content = annotation
-            };
+        //private Label CreateCardAnnotation(string annotation)
+        //{
+        //    var label = new Label
+        //    {
+        //        Content = annotation
+        //    };
 
-            return label;
-        }
+        //    return label;
+        //}
 
-        private StackPanel CreateCardAmount()
-        {
-            var cardAmount = new StackPanel
-            {
-                Orientation = Orientation.Horizontal
-            };
+        //private StackPanel CreateCardAmount()
+        //{
+        //    var cardAmount = new StackPanel
+        //    {
+        //        Orientation = Orientation.Horizontal
+        //    };
 
-            cardAmount.Children.Add(CreateCardAmountButton("-"));
-            cardAmount.Children.Add(CreateCardAmountLabel());
-            cardAmount.Children.Add(CreateCardAmountButton("+"));
+        //    cardAmount.Children.Add(CreateCardAmountButton("-"));
+        //    cardAmount.Children.Add(CreateCardAmountLabel());
+        //    cardAmount.Children.Add(CreateCardAmountButton("+"));
 
-            return cardAmount;
-        }
+        //    return cardAmount;
+        //}
 
-        private Label CreateCardAmountLabel()
-        {
-            var label = new Label
-            {
-                Content = "0",
-            };
-            return label;
-        }
+        //private Label CreateCardAmountLabel()
+        //{
+        //    var label = new Label
+        //    {
+        //        Content = "0",
+        //    };
+        //    return label;
+        //}
 
-        private Button CreateCardAmountButton(string content)
-        {
-            var button = new Button
-            {
-                Content = content,
-            };
-            button.Click += Button_CardAmount_OnClick;
-            return button;
-        }
-        private void Button_CardAmount_OnClick(object sender, RoutedEventArgs e)
-        {
-            var content = ((Button)sender).Content.ToString();
-            var product = ((Label)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[2]).Content
-                .ToString();
+        //private Button CreateCardAmountButton(string content)
+        //{
+        //    var button = new Button
+        //    {
+        //        Content = content,
+        //    };
+        //    button.Click += Button_CardAmount_OnClick;
+        //    return button;
+        //}
+        //    private void Button_CardAmount_OnClick(object sender, RoutedEventArgs e)
+        //    {
+        //        var content = ((Button)sender).Content.ToString();
+        //        var product = ((Label)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[2]).Content
+        //            .ToString();
 
-            switch (content)
-            {
-                case "-":
-                    ReduceFromOrder(product);
-                    break;
-                case "+":
-                    AddToOrder(product);
-                    break;
-            }
+        //        switch (content)
+        //        {
+        //            case "-":
+        //                ReduceFromOrder(product);
+        //                break;
+        //            case "+":
+        //                AddToOrder(product);
+        //                break;
+        //        }
 
-    ((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = AmountProduct(product);
+        //((Label)((StackPanel)((Button)sender).Parent).Children[1]).Content = AmountProduct(product);
 
-            Button_Basket.Content = Order.Count > 0 ? $"Корзина ({Order.Count})" : "Корзина";
-        }
+        //        Button_Basket.Content = Order.Count > 0 ? $"Корзина ({Order.Count})" : "Корзина";
+        //    }
 
 
-        private bool IsNewLine(string product)
-        {
-            // Проверяет - это новый товар в корзине? 
-            return Order.All(line => line.ProductName != product);
-        }
+        //private bool IsNewLine(string product)
+        //{
+        //    // Проверяет - это новый товар в корзине? 
+        //    return Order.All(line => line.ProductName != product);
+        //}
 
-        private void AddToOrder(string product)
-        {
-            if (IsNewLine(product))
-            {
-                Order.Add(new OrderLine { ProductName = product, ProductAmount = 1 });
-            }
-            else
-            {
-                foreach (var orderLine in Order)
-                {
-                    if (orderLine.ProductName != product) continue;
+        //private void AddToOrder(string product)
+        //{
+        //    if (IsNewLine(product))
+        //    {
+        //        Order.Add(new OrderRow { ProductName = product, RowAmount = 1 });
+        //    }
+        //    else
+        //    {
+        //        foreach (var orderLine in Order)
+        //        {
+        //            if (orderLine.ProductName != product) continue;
 
-                    orderLine.ProductAmount++;
-                    break;
-                }
-            }
-        }
+        //            orderLine.RowAmount++;
+        //            break;
+        //        }
+        //    }
+        //}
 
-        private void ReduceFromOrder(string product)
-        {
-            if (IsNewLine(product)) return;
+        //private void ReduceFromOrder(string product)
+        //{
+        //    if (IsNewLine(product)) return;
 
-            foreach (var orderLine in Order)
-            {
-                if (orderLine.ProductName == product && orderLine.ProductAmount > 1)
-                {
-                    orderLine.ProductAmount--;
-                }
-                else
-                {
-                    Order.Remove(orderLine);
-                    break;
-                }
-            }
-        }
+        //    foreach (var orderLine in Order)
+        //    {
+        //        if (orderLine.ProductName == product && orderLine.RowAmount > 1)
+        //        {
+        //            orderLine.RowAmount--;
+        //        }
+        //        else
+        //        {
+        //            Order.Remove(orderLine);
+        //            break;
+        //        }
+        //    }
+        //}
 
-        private void Button_Basket_Click(object sender, RoutedEventArgs e)
-        {
-            var basket = new WindowBasket();
+        //private void Button_Basket_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var basket = new WindowBasket();
 
-            basket.Show();
-        }
+        //    basket.Show();
+        //}
 
-        private int AmountProduct(string product)
-        {
-            return !IsNewLine(product)
-                ? (from orderLine in Order where orderLine.ProductName == product select orderLine.ProductAmount)
-                .FirstOrDefault()
-                : 0;
-        }
+        //private int AmountProduct(string product)
+        //{
+        //    return !IsNewLine(product)
+        //        ? (from orderLine in Order where orderLine.ProductName == product select orderLine.RowAmount)
+        //        .FirstOrDefault()
+        //        : 0;
+        //}
 
         //TODO Переместить в админку
         private void Button_CreateDbConnectionTemplate_Click(object sender, RoutedEventArgs e)

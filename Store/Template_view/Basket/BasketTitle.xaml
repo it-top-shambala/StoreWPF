@@ -9,8 +9,12 @@
     <UserControl.Resources>
         <ResourceDictionary Source="..\..\Style.xaml"/>
     </UserControl.Resources>
-    <DockPanel LastChildFill="True" Background="Gray">
-        <Grid DockPanel.Dock="Bottom" Height="45">
+    <DockPanel
+        Height="90" Width="1300"
+        LastChildFill="True">
+        <Grid
+            DockPanel.Dock="Bottom"
+            Height="45">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="10*"/>

@@ -20,9 +20,14 @@ namespace Store.Template_view.Basket
     /// </summary>
     public partial class BasketTitle : UserControl
     {
+        public string ID { get; set; }
+        public DateTime DateTime { get; set; }
         public BasketTitle()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
+
+        //TODO Заполнение заголовка формы
     }
 }

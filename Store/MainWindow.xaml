@@ -14,9 +14,17 @@
 
     <StackPanel Background="Gray">
         <StackPanel  Orientation="Horizontal">
-            <Button Content="Магазин"/>
-            <Button Content="Склад"/>
-            <Button x:Name="Button_Basket" Content="Корзина" Click="Button_Basket_Click"/>
+            <Button
+                Content="Магазин"
+                x:Name="Button_ShowStore"
+                Click="Button_ShowStore_Click"/>
+            <Button
+                Content="Корзина"
+                x:Name="Button_ShowBasket"
+                Click="Button_ShowBasket_Click"/>
+            <Button
+                Content="Склад"
+                x:Name="Button_WareHouse"/>
             <Button Content="Авторизоваться"/>
             <Button x:Name="Button_CreateDbConnectionTemplate"
                     Content="Шаблон подключения"
@@ -25,7 +33,6 @@
 
         <!--  Витрина (Showcase)  -->
         <WrapPanel x:Name="WrapPanel_Showcase"
-                   Orientation="Horizontal"
                    Width="1366" Height="630">
             <!--  Карты продуктов  -->
         </WrapPanel>
