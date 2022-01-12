@@ -13,7 +13,7 @@ namespace DataModelLib
 
         public ObsColOrder()
         {
-
+            Order = new ObservableCollection<OrderRow>();
         }
 
         //TODO Функция проверки новый продукт в карзине или повтор
@@ -79,7 +79,7 @@ namespace DataModelLib
             double OrderCost = 0.0;
             foreach (var orderRow in Order)
             {
-                OrderCost += orderRow.GetCost();
+                OrderCost += orderRow.GetRowCost();
             }
             return Math.Round(OrderCost, 2);
         }
@@ -88,7 +88,7 @@ namespace DataModelLib
         {
             return Order.Count();
         }
-        //TODO Функия совершения покупки
 
+        //TODO Функия совершения покупки
     }
 }

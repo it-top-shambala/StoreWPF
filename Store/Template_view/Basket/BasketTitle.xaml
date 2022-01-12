@@ -11,7 +11,8 @@
     </UserControl.Resources>
     <DockPanel
         Height="90" Width="1300"
-        LastChildFill="True">
+        LastChildFill="True"
+        Background="Gray">
         <Grid
             DockPanel.Dock="Bottom"
             Height="45">
@@ -29,48 +30,42 @@
                 Style="{StaticResource ResourceKey=Style_Border}">
                 <Label
                     Content="#"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource ResourceKey=Style_TitleTable}"/>
             </Border>
             <Border
                 Grid.Column="1"
                 Style="{StaticResource ResourceKey=Style_Border}">
                 <Label
                     Content="Наименование"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
+                    Style="{StaticResource ResourceKey=Style_TitleTable}"/>
             </Border>
             <Border
                 Grid.Column="2"
                 Style="{StaticResource ResourceKey=Style_Border}">
                 <Label
                     Content="Доступно"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource ResourceKey=Style_TitleTable}"/>
             </Border>
             <Border
                 Grid.Column="3"
                 Style="{StaticResource ResourceKey=Style_Border}">
                 <Label
                     Content="Количесво"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource ResourceKey=Style_TitleTable}"/>
             </Border>
             <Border
                 Grid.Column="4"
                 Style="{StaticResource ResourceKey=Style_Border}">
                 <Label
                     Content="Цена"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource ResourceKey=Style_TitleTable}"/>
             </Border>
             <Border
                 Grid.Column="5"
                 Style="{StaticResource ResourceKey=Style_Border}">
                 <Label
                     Content="Итого"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource ResourceKey=Style_TitleTable}"/>
             </Border>
             <Border
                 Grid.Column="6"
@@ -82,13 +77,19 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center">
             <Label
-                Content="КАРЗИНА № "/>
+                Content="КАРЗИНА № "
+                Style="{StaticResource ResourceKey=Style_Title}"/>
             <Label
-                Content="0000"/>
+                x:Name="Label_BasketID"
+                Content="{Binding BasketID}"
+                Style="{StaticResource ResourceKey=Style_Title}"/>
             <Label
-                Content=" от "/>
+                Content=" от "
+                Style="{StaticResource ResourceKey=Style_Title}"/>
             <Label
-                Content="01.01.2022"/>
+                x:Name="Label_BasketDate"
+                Content="{Binding BasketDate}"
+                Style="{StaticResource ResourceKey=Style_Title}"/>
         </StackPanel>
     </DockPanel>
 </UserControl>

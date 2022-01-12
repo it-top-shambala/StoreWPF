@@ -43,14 +43,14 @@ namespace Store
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    WrapPanel_Showcase.Children.Add(new Template_view.Product_Card.Card(Products[i]));
+                    WrapPanel_Showcase.Children.Add(new Template_view.Product_Card.Card( Products[i], Order.AddProductToOrder ));
                 }
             }
             else
             {
                 foreach (var item in Products)
                 {
-                    WrapPanel_Showcase.Children.Add(new Template_view.Product_Card.Card(item));
+                    WrapPanel_Showcase.Children.Add(new Template_view.Product_Card.Card( item, Order.AddProductToOrder  ));
                 }
             }
         }
@@ -66,11 +66,12 @@ namespace Store
         {
             //  Корзина
             //  Заголовок корзины
-            WrapPanel_Showcase.Children.Add(new Template_view.Basket.BasketTitle());
-            //  Строки корзины
 
+            WrapPanel_Showcase.Children.Add(new Template_view.Basket.BasketTitle { BasketID = "0000", BasketDate = "12.01.2022" });
+            //  Строки корзины
+            WrapPanel_Showcase.Children.Add(new Template_view.Basket.BasketRow());
             //  Подвал корзины
-            //WrapPanel_Showcase.Children.Add(new Template_view.Basket.BasketFooter());
+            WrapPanel_Showcase.Children.Add(new Template_view.Basket.BasketFooter());
         }
         #endregion
 
@@ -78,7 +79,7 @@ namespace Store
         private void Button_ShowStore_Click(object sender, RoutedEventArgs e)
         {
             WrapPanel_Showcase.Children.Clear();
-            //WrapPanel_Showcase.Orientation = Orientation.Horizontal;
+            WrapPanel_Showcase.Orientation = Orientation.Horizontal;
             CreateListCards();
         }
         private void Button_ShowBasket_Click(object sender, RoutedEventArgs e)
@@ -86,7 +87,7 @@ namespace Store
             //if (Order.GetOrderCount() > 0)
             {
                 WrapPanel_Showcase.Children.Clear();
-                //WrapPanel_Showcase.Orientation = Orientation.Vertical;
+                WrapPanel_Showcase.Orientation = Orientation.Vertical;
 
                 CreateListOrder();
             }

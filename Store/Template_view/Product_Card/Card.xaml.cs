@@ -29,6 +29,8 @@ namespace Store.Template_view.Product_Card
         public string ProductPrice { get; set; } // стоимость
         public string ProductCounter { get; set; } // Количество продуктов
         public string ProductAnnotation { get; set; } // Описание продуктов
+        public Product Product { get; set; }
+        private Action<Product,int> AddToBasket;
 
         public Card()
         {
@@ -36,17 +38,22 @@ namespace Store.Template_view.Product_Card
             this.DataContext = this;
         }
 
-        public Card(Product product)
+        public Card(Product product, Action<Product, int> addToBasket)
         {
             InitializeComponent();
-            this.ProductName = product.Name;
-            this.ProductArtNumber = product.Id.ToString();
-            //this.ProductImage = product.Image;
-            this.ProductAvailable = product.Amount.ToString();
-            this.ProductPrice = product.Price.ToString();
-            this.ProductAnnotation = product.Annotation;
-            this.ProductCounter = "0";
             this.DataContext = this;
+            //this.ProductName = product.Name;
+            //this.ProductArtNumber = product.Id.ToString();
+            ////this.ProductImage = product.Image;
+            //this.ProductAvailable = product.Amount.ToString();
+            //this.ProductPrice = product.Price.ToString();
+            //this.ProductAnnotation = product.Annotation;
+            //this.DataContext = this;
+            Product = product;
+            AddToBasket = addToBasket;
+            this.TextBlock_ProductName.Text = Product.Name;
+            this.ProductCounter = "0";
+
         }
 
         private void Button_ProductCountKey_Reduce_Click(object sender, RoutedEventArgs e)
@@ -73,6 +80,13 @@ namespace Store.Template_view.Product_Card
         private void Button_ProductCountKey_Cancel_Click(object sender, RoutedEventArgs e)
         {
             TextBox_ProductCounter.Text = "0";
+        }
+
+        private void Button_ProductAddToCartKey_Click(object sender, RoutedEventArgs e)
+        {
+            AddToBasket?.Invoke(Product, Convert.ToInt32(TextBox_ProductCounter.Text));
+
+            //MainWindow.Order.AddProductToOrder(new Product(), 0);
         }
     }
 }

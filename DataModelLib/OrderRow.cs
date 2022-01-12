@@ -9,10 +9,11 @@ namespace DataModelLib
     public class OrderRow
     {
         public Product Product { get; set; }
-        public int RowAmount { get; set; }
+        public int RowAmount { get; set; } // Количество продукта в строке
+        public uint RowNumber { get; set; } //  номер строки
 
         //TODO Функция расчета стоимости строки
-        public double GetCost()
+        public double GetRowCost()
         {
             //  Возвращает стоимость строки
             return Math.Round(Product.Price*RowAmount, 2);

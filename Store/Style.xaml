@@ -102,7 +102,23 @@
     
     <!-- Стили корзины  -->
     <Style x:Key="Style_Border" TargetType="Border">
-        <Setter Property="BorderBrush" Value="Black"/>
+        <!--Стиль вордюра ячейки-->
+        <Setter Property="BorderBrush" Value="Red"/>
         <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+    <Style x:Key="Style_Title" TargetType="Label">
+        <!--Стиль заголовка документа-->
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="Style_TitleTable" TargetType="Label">
+        <!--Слить заголовка таблицы-->
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="Style_RowTable" TargetType="Label">
+        <!--Стиль строки таблицы-->
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 </ResourceDictionary>

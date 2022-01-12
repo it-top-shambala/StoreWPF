@@ -17,7 +17,7 @@
         <StackPanel>
             <TextBlock
                 x:Name="TextBlock_ProductName"
-                Text="{Binding ProductName}"
+                Text="{Binding Product.Name}"
                 Style="{StaticResource ResourceKey=Style_ProductName}"/>
             <Grid
                 Height="230"
@@ -31,7 +31,7 @@
                 <Image
                     x:Name="Image_ProductImage"
                     Grid.Row="0" Grid.Column="0"
-                    Source="{Binding ProductImage}"
+                    Source="{Binding Product.Image}"
                     Style="{StaticResource ResourceKey=Style_ProductImage}"/>
                 <StackPanel
                     Orientation="Horizontal"
@@ -120,6 +120,7 @@
                         <Button
                             x:Name="Button_ProductAddToCartKey"
                             Content="в корзину"
+                            Click="Button_ProductAddToCartKey_Click"
                             Grid.Column="4"
                             Style="{StaticResource ResourceKey=Style_ProductAddToCartKey}"/>
                     </Grid>
